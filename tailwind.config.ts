@@ -10,7 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         darkGrey: "rgba(255, 255, 255, .2)",
+        secondary_darkGrey: "rgba(255, 255, 255, .1)",
         lightGrey: "rgba(255, 255, 255, .6)",
+        accent_blue: "#025af2",
       },
     },
   },
