@@ -1,5 +1,7 @@
 import React from "react";
+import Link from "next/link";
 import * as regular from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 type AppProps = {
   name: string;
@@ -9,8 +11,13 @@ type AppProps = {
 
 export default function BookmarksItem({ name, path, picture }: AppProps) {
   return (
-    <div className="bg-slate-600 h-[50px]">
-      {name}: {path}
-    </div>
+    <Link href={path}>
+      <div className=" h-[50px] flex items-center px-4 py-6 gap-4 rounded-lg hover:bg-darkGrey">
+        <div className="w-[25px] h-[25px]">
+          <FontAwesomeIcon icon={picture} size="xl" />
+        </div>
+        <p>{name}</p>
+      </div>
+    </Link>
   );
 }

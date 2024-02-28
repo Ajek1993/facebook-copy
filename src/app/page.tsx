@@ -1,7 +1,14 @@
+import LeftSideBar from "@/components/SideBars/LeftSideBar";
+
 export default function App() {
   return (
     <>
-      <div className="text-grey">In progress</div>
+      <main className="w-full">
+        <aside className="max-w-[280px] hidden md:block">
+          <LeftSideBar />
+        </aside>
+      </main>
+      <aside></aside>
     </>
   );
 }

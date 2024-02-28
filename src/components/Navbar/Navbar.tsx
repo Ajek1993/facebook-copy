@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -19,7 +20,6 @@ import {
   faFacebook,
   faFacebookMessenger,
 } from "@fortawesome/free-brands-svg-icons";
-import { usePathname } from "next/navigation";
 import CircularButton from "./buttons/CircularButton";
 import NavigationButton from "./buttons/NavigationButton";
 import Bookmarks from "../Bookmarks/Bookmarks";
@@ -45,8 +45,7 @@ const CIRCULAR_BUTTONS: Button[] = [
 ];
 
 export default function Navbar() {
-  const path = usePathname();
-  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -77,21 +76,24 @@ export default function Navbar() {
               type="text"
             />
           </div>
-          <div
-            className={`h-[40px] flex items-center relative ${
-              menuOpen
-                ? "before:absolute before:bg-accent_blue before:h-1 before:w-[90%] before:-bottom-1"
-                : "before:none"
-            }`}
-          >
-            <FontAwesomeIcon
-              icon={faBars}
-              className={`sm:hidden p-4 h-3/4 cursor-pointer relative ${
-                menuOpen ? "text-accent_blue" : "text-lightGrey"
+          <Link href={`${pathname === "/bookmarks" ? "/" : "/bookmarks"}`}>
+            <div
+              className={`h-[40px] flex items-center relative ${
+                pathname === "/bookmarks"
+                  ? "before:absolute before:bg-accent_blue before:h-1 before:w-[90%] before:-bottom-2"
+                  : "before:none"
               }`}
-              onClick={() => setMenuOpen((prev) => !prev)}
-            />
-          </div>
+            >
+              <FontAwesomeIcon
+                icon={faBars}
+                className={`md:hidden p-4 h-3/4 cursor-pointer relative ${
+                  pathname === "/bookmarks"
+                    ? "text-accent_blue"
+                    : "text-lightGrey"
+                }`}
+              />
+            </div>
+          </Link>
         </div>
 
         <nav className="flex grow justify-center">
@@ -107,7 +109,6 @@ export default function Navbar() {
           </ul>
         </div>
       </header>
-      {menuOpen && <Bookmarks />}
     </>
   );
 }

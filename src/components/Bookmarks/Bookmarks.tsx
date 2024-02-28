@@ -1,17 +1,13 @@
 import React from "react";
 import BookmarksItem from "./BookmarksItem";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faHouse,
   faFilm,
-  faStore,
   faUsers,
-  faGamepad,
-  faEllipsis,
-  faBell,
   faUser,
-  faMagnifyingGlass,
-  faBars,
+  faClockRotateLeft,
+  faBookmark,
+  faUserGroup,
+  faCalendarDay,
 } from "@fortawesome/free-solid-svg-icons";
 import * as regular from "@fortawesome/free-regular-svg-icons";
 
@@ -22,17 +18,18 @@ interface Bookmark {
 }
 
 const bookmarks: Bookmark[] = [
-  { name: "User", path: "/user", picture: faHouse },
-  { name: "Friends", path: "/friends", picture: faFilm },
-  { name: "Memories", path: "/memories", picture: faStore },
-  { name: "Films", path: "/films", picture: faUsers },
-  { name: "Saves", path: "/saves", picture: faGamepad },
-  { name: "Groups", path: "/groups", picture: faGamepad },
+  { name: "User", path: "/userInfo", picture: faUser },
+  { name: "Friends", path: "/friends", picture: faUserGroup },
+  { name: "Memories", path: "/memories", picture: faClockRotateLeft },
+  { name: "Films", path: "/movies", picture: faFilm },
+  { name: "Saves", path: "/saves", picture: faBookmark },
+  { name: "Groups", path: "/groups", picture: faUsers },
+  { name: "Events", path: "/events", picture: faCalendarDay },
 ];
 
 export default function Bookmarks() {
   return (
-    <ul>
+    <ul className="m-2">
       {bookmarks.map((bookmark, id) => (
         <li key={id}>
           <BookmarksItem
@@ -42,6 +39,7 @@ export default function Bookmarks() {
           />
         </li>
       ))}
+      <div className="w-full h-0.5 bg-darkGrey"></div>
     </ul>
   );
 }
