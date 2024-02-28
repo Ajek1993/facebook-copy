@@ -19,6 +19,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import * as regular from "@fortawesome/free-regular-svg-icons";
 import ShortcutItem from "./ShortcutItem";
+import Heading from "../Heading";
 
 interface Bookmark {
   name: string;
@@ -52,7 +53,7 @@ export default function Bookmarks() {
   const numOfBookmarks = bookmarks.length;
 
   return (
-    <ul className="m-2">
+    <ul>
       {bookmarks.slice(0, visibleBookmarks).map((bookmark, id) => (
         <li key={id}>
           <BookmarksItem
@@ -86,7 +87,7 @@ export default function Bookmarks() {
         )}
       </li>
       <div className="w-full h-0.5 my-2 bg-darkGrey"></div>
-      <p className="px-2 py-2 text-lg text-lightGrey">Your shortcuts</p>
+      <Heading title={"Your shortcuts"} />
       {shortcuts.map((shortcut, id) => (
         <li key={id}>
           <ShortcutItem name={shortcut.name} picture={shortcut.picture} />
