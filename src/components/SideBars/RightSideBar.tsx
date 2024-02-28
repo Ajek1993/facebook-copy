@@ -13,10 +13,10 @@ import { persons } from "../../data/persons.js";
 
 export default function RightSideBar() {
   return (
-    <aside className="w-[350px] min-w-[250px] m-2 pr-3">
+    <aside className="w-[350px] h-screen min-w-[250px] m-2 hover:overflow-y-scroll overflow-hidden">
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Your sites and profiles"} />
-        <div className="h-[30px] text-lightGrey hover:text-accent_blue cursor-pointer">
+        <div className="h-[30px] text-lightGrey hover:text-accent_blue cursor-pointer absolute right-7">
           <FontAwesomeIcon icon={faEllipsis} size="lg" />
         </div>
       </div>
@@ -33,11 +33,11 @@ export default function RightSideBar() {
       <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Contacts"} />
-        <div className="h-[30px] flex gap-4 text-lightGrey ">
+        <div className="h-[30px] flex gap-4 text-lightGrey absolute right-7">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             size="lg"
-            className="hover:text-accent_blue cursor-pointer"
+            className="hover:text-accent_blue cursor-pointer "
           />
           <FontAwesomeIcon
             icon={faEllipsis}
@@ -50,7 +50,7 @@ export default function RightSideBar() {
         {persons.map((person, id) => (
           <li
             key={id}
-            className="flex items-center py-3 gap-3 hover:bg-lightGrey"
+            className="flex items-center py-3 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
           >
             <Image
               src={"https://picsum.photos/50/50"}
@@ -65,6 +65,10 @@ export default function RightSideBar() {
           </li>
         ))}
       </ul>
+      <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
+      <div className="mt-4 flex justify-between items-center">
+        <Heading title={"Group coversations"} />
+      </div>
     </aside>
   );
 }
