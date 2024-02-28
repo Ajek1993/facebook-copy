@@ -22,7 +22,6 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import CircularButton from "./buttons/CircularButton";
 import NavigationButton from "./buttons/NavigationButton";
-import Bookmarks from "../Bookmarks/Bookmarks";
 
 interface Button {
   path: string;
@@ -67,7 +66,7 @@ export default function Navbar() {
               className="h-1/3 relative left-7 lg:left-8"
             />
             <input
-              className="rounded-full placeholder:italic bg-darkGrey px-4 pl-10 py-2 outline-none hidden lg:inline-block"
+              className="rounded-full placeholder:italic bg-darkGrey px-4 pl-10 py-2 max-w-[210px] outline-none hidden lg:inline-block"
               placeholder="Search Facebook"
               type="text"
             />

@@ -15,6 +15,7 @@ import {
   faCar,
   faCaretUp,
   faStore,
+  faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 import * as regular from "@fortawesome/free-regular-svg-icons";
 import ShortcutItem from "./ShortcutItem";
@@ -36,6 +37,7 @@ const bookmarks: Bookmark[] = [
   { name: "Groups", path: "/groups", picture: faUsers },
   { name: "Events", path: "/events", picture: faCalendarDay },
   { name: "Marketplace", path: "/marketplace", picture: faStore },
+  { name: "Payments", path: "#", picture: faCreditCard },
 ];
 
 const shortcuts: Shortcut[] = [
