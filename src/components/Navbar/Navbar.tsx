@@ -19,33 +19,34 @@ import {
   faFacebook,
   faFacebookMessenger,
 } from "@fortawesome/free-brands-svg-icons";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import CircularButton from "./buttons/CircularButton";
+import NavigationButton from "./buttons/NavigationButton";
 
 interface Button {
   path: string;
   font: regular.IconDefinition;
 }
 
+const NAV_BUTTONS: Button[] = [
+  { path: "/", font: faHouse },
+  { path: "/movies", font: faFilm },
+  { path: "/marketplace", font: faStore },
+  { path: "/groups", font: faUsers },
+  { path: "/games", font: faGamepad },
+];
+
+const CIRCULAR_BUTTONS: Button[] = [
+  { path: "Menu", font: faEllipsis },
+  { path: "Messenger", font: faFacebookMessenger },
+  { path: "Notifications", font: faBell },
+  { path: "Account", font: faUser },
+];
+
 export default function Navbar() {
   const path = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
-  console.log(path);
-
-  const NAV_BUTTONS: Button[] = [
-    { path: "/", font: faHouse },
-    { path: "/movies", font: faFilm },
-    { path: "/marketplace", font: faStore },
-    { path: "/groups", font: faUsers },
-    { path: "/games", font: faGamepad },
-  ];
-
-  const CIRCULAR_BUTTONS: Button[] = [
-    { path: "Menu", font: faEllipsis },
-    { path: "Messenger", font: faFacebookMessenger },
-    { path: "Notifications", font: faBell },
-    { path: "Account", font: faUser },
-  ];
   return (
     <>
       <header className="h-[60px] flex items-center justify-between p-2 bg-secondary_darkGrey">
@@ -84,48 +85,24 @@ export default function Navbar() {
 
         <nav className="flex grow justify-center">
           {NAV_BUTTONS.map((button, id) => (
-            <Link href={button.path} key={id}>
-              <div
-                className={`h-[50px] w-max-[120px] hidden sm:flex justify-center items-center sm:px-4 md:px-6 lg:px-10 xl:px12 2xl:px-16 py-2 hover:bg-secondary_darkGrey rounded-xl relative ${
-                  path === button.path
-                    ? "before:absolute before:bg-accent_blue before:h-1 before:w-[90%] before:-bottom-1"
-                    : "before:none"
-                }`}
-              >
-                <FontAwesomeIcon
-                  icon={button.font}
-                  className={`h-3/4 ${
-                    path === button.path ? "text-accent_blue" : "text-lightGrey"
-                  } `}
-                />
-              </div>
-            </Link>
+            <NavigationButton key={id} font={button.font} path={button.path} />
           ))}
         </nav>
         <div>
           <ul className="flex gap-2">
             {CIRCULAR_BUTTONS.map((button, id) => (
-              <li key={id}>
-                <div className="h-[45px] w-[45px] flex items-center justify-center p-2 bg-darkGrey hover:bg-secondary_darkGrey rounded-full cursor-pointer">
-                  <FontAwesomeIcon
-                    icon={button.font}
-                    className="h-3/4 text-lightGrey "
-                  />
-                </div>
-              </li>
+              <CircularButton key={id} font={button.font} />
             ))}
           </ul>
         </div>
       </header>
       {menuOpen && (
-        <div>
-          <ul>
-            <li>11111111111111</li>
-            <li>2222222222</li>
-            <li>322333333333</li>
-            <li>433344535644</li>
-          </ul>
-        </div>
+        <ul>
+          <li>11111111111111</li>
+          <li>2222222222</li>
+          <li>322333333333</li>
+          <li>433344535644</li>
+        </ul>
       )}
     </>
   );
