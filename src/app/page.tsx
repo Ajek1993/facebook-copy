@@ -4,7 +4,7 @@ export default function App() {
   return (
     <>
       <main className="w-full">
-        <aside className="max-w-[280px] hidden md:block">
+        <aside className="h-screen max-w-[280px] hidden md:block">
           <LeftSideBar />
         </aside>
       </main>
