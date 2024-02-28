@@ -22,6 +22,7 @@ import {
 import { usePathname } from "next/navigation";
 import CircularButton from "./buttons/CircularButton";
 import NavigationButton from "./buttons/NavigationButton";
+import Bookmarks from "../Bookmarks/Bookmarks";
 
 interface Button {
   path: string;
@@ -76,11 +77,21 @@ export default function Navbar() {
               type="text"
             />
           </div>
-          <FontAwesomeIcon
-            icon={faBars}
-            className="sm:hidden p-4 h-3/4 text-lightGrey cursor-pointer"
-            onClick={() => setMenuOpen((prev) => !prev)}
-          />
+          <div
+            className={`h-[40px] flex items-center relative ${
+              menuOpen
+                ? "before:absolute before:bg-accent_blue before:h-1 before:w-[90%] before:-bottom-1"
+                : "before:none"
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={faBars}
+              className={`sm:hidden p-4 h-3/4 cursor-pointer relative ${
+                menuOpen ? "text-accent_blue" : "text-lightGrey"
+              }`}
+              onClick={() => setMenuOpen((prev) => !prev)}
+            />
+          </div>
         </div>
 
         <nav className="flex grow justify-center">
@@ -96,14 +107,7 @@ export default function Navbar() {
           </ul>
         </div>
       </header>
-      {menuOpen && (
-        <ul>
-          <li>11111111111111</li>
-          <li>2222222222</li>
-          <li>322333333333</li>
-          <li>433344535644</li>
-        </ul>
-      )}
+      {menuOpen && <Bookmarks />}
     </>
   );
 }
