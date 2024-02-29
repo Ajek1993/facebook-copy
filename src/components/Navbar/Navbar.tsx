@@ -20,8 +20,8 @@ import {
   faFacebook,
   faFacebookMessenger,
 } from "@fortawesome/free-brands-svg-icons";
-import CircularButton from "./buttons/CircularButton";
-import NavigationButton from "./buttons/NavigationButton";
+import CircularButton from "../buttons/CircularButton";
+import NavigationButton from "../buttons/NavigationButton";
 
 interface Button {
   path: string;

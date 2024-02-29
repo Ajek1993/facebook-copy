@@ -24,7 +24,7 @@ export default function NavigationButton({ font, path }: AppProps) {
         <FontAwesomeIcon
           icon={font}
           className={`h-3/4 ${
-            actualPath === path ? "text-accent_blue" : "text-lightGrey"
+            actualPath === path ? "text-accent_blue" : "text-white"
           } `}
         />
       </div>

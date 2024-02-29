@@ -9,9 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        darkGrey: "rgba(255, 255, 255, .2)",
-        secondary_darkGrey: "rgba(255, 255, 255, .1)",
-        lightGrey: "rgba(255, 255, 255, .6)",
+        main_background: "#1c1e21",
+        darkGrey: "rgb(96,96,96)",
+        secondary_darkGrey: "rgb(64,64,64)",
+        lightGrey: "rgba(128,128,128)",
         accent_blue: "#025af2",
       },
     },
