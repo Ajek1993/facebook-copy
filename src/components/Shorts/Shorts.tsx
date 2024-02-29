@@ -1,21 +1,33 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import { persons } from "@/data/persons";
 import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
 import ShortPaginationButton from "../buttons/ShortPaginationButton";
 
 export default function Shorts() {
+  const [shortsPage, setShortsPage] = useState(0);
   return (
-    <ul className="py-4 flex flex-wrap justify-center gap-2 gap-y-6 max-w-[1000px] h-[270px] overflow-hidden relative">
-      <span className="absolute z-10 left-16 top-1/2 -translate-y-[50%]">
-        <ShortPaginationButton icon={faLessThan} />
-      </span>
-      <span className="absolute z-10 right-16 top-1/2 -translate-y-[50%]">
-        <ShortPaginationButton icon={faGreaterThan} />
-      </span>
+    <ul className="py-4 flex flex-wrap justify-center gap-2 gap-y-6 max-w-[750px] h-[270px] overflow-hidden">
+      {shortsPage > 0 && (
+        <span
+          className="absolute z-10 left-4 top-[138px] -translate-y-[50%]"
+          onClick={() => setShortsPage((prev) => prev - 1)}
+        >
+          <ShortPaginationButton icon={faLessThan} />
+        </span>
+      )}
+      {shortsPage + 5 < persons.length && (
+        <span
+          className="absolute z-10 right-4 top-[138px] -translate-y-[50%]"
+          onClick={() => setShortsPage((prev) => prev + 1)}
+        >
+          <ShortPaginationButton icon={faGreaterThan} />
+        </span>
+      )}
 
-      {persons.map((person, id) => (
-        <li key={id} className="relative h-full cursor-pointer z-0">
+      {persons.slice(shortsPage, shortsPage + 5).map((person, id) => (
+        <li key={id} className="relative h-full cursor-pointer">
           <Image
             src={person.picture}
             width={40}

@@ -14,10 +14,13 @@ import { persons } from "@/data/persons.js";
 export default function RightSideBar() {
   return (
     <aside className="w-[350px] h-screen min-w-[250px] hover:overflow-y-scroll overflow-hidden">
-      <div className="mt-4 flex justify-start gap-x-[68px] items-center">
+      <div className="mt-4 flex justify-between items-center">
         <Heading title={"Your sites and profiles"} />
-        <div className="h-[30px] text-lightGrey hover:text-accent_blue flex justify-center items-center cursor-pointer">
-          <FontAwesomeIcon icon={faEllipsis} className="h-3/5" />
+        <div className="h-[30px] text-lightGrey hover:text-accent_blue flex justify-center items-center cursor-pointer relative">
+          <FontAwesomeIcon
+            icon={faEllipsis}
+            className="h-3/5 absolute right-2"
+          />
         </div>
       </div>
       <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
@@ -31,9 +34,9 @@ export default function RightSideBar() {
         </div>
       </div>
       <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
-      <div className="mt-4 flex justify-start gap-x-[142px] items-center">
+      <div className="mt-4 flex justify-between items-center relative">
         <Heading title={"Contacts"} />
-        <div className="h-[30px] flex items-center gap-4 text-lightGrey">
+        <div className="h-[30px] flex items-center gap-4 text-lightGrey absolute right-2">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className="hover:text-accent_blue cursor-pointer h-3/5"

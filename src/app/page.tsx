@@ -5,9 +5,9 @@ import RightSideBar from "@/components/SideBars/RightSideBar";
 export default function App() {
   return (
     <>
-      <main className="w-full flex justify-between">
+      <main className="w-full flex justify-between ">
         <LeftSideBar />
-        <section className="px-16 mx-20">
+        <section className="mx-16 max-w-[1000px] bg-slate-400 relative">
           <Shorts />
         </section>
 
