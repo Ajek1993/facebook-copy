@@ -71,7 +71,7 @@ export default function Navbar() {
           </div>
           <Link href={`${pathname === "/bookmarks" ? "/" : "/bookmarks"}`}>
             <div
-              className={`h-[40px] flex items-center relative ${
+              className={`xl:hidden h-[40px] flex items-center relative ${
                 pathname === "/bookmarks"
                   ? "before:absolute before:bg-accent_blue before:h-1 before:w-[90%] before:-bottom-2"
                   : "before:none"
@@ -79,7 +79,7 @@ export default function Navbar() {
             >
               <FontAwesomeIcon
                 icon={faBars}
-                className={`md:hidden p-4 h-3/4 cursor-pointer relative ${
+                className={`p-4 h-3/4 cursor-pointer relative ${
                   pathname === "/bookmarks"
                     ? "text-accent_blue"
                     : "text-lightGrey"
@@ -89,7 +89,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <nav className="flex grow justify-center">
+        <nav className="hidden xl:flex grow justify-center">
           {NAV_BUTTONS.map((button, id) => (
             <NavigationButton key={id} font={button.font} path={button.path} />
           ))}

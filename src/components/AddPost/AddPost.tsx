@@ -25,7 +25,7 @@ export default function AddPost() {
           />
         </div>
         <input
-          className="rounded-full placeholder:italic bg-darkGrey px-4 py-2 outline-none w-full hover:opacity-85 cursor-pointer"
+          className="rounded-full placeholder:text-lg text-lg bg-darkGrey px-4 py-1.5 outline-none w-full hover:opacity-85 cursor-pointer"
           placeholder={`What are you thinking about, ${name}?`}
           type="text"
         />

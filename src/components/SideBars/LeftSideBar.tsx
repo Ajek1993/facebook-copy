@@ -4,7 +4,7 @@ import Footer from "../Footer";
 
 export default function LeftSideBar() {
   return (
-    <aside className="max-w-[280px] hidden md:block m-2">
+    <aside className="max-w-[280px] hidden xl:block m-2 fixed left-0">
       <div className="flex flex-col justify-between">
         <Bookmarks />
         <Footer />

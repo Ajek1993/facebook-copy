@@ -12,7 +12,7 @@ import GreySeparator from "../common/GreySeparator";
 
 export default function RightSideBar() {
   return (
-    <aside className="w-[350px] h-screen min-w-[250px] hover:overflow-y-scroll overflow-hidden">
+    <aside className="w-[350px] h-screen min-w-[250px] hidden lg:block hover:overflow-y-scroll overflow-hidden fixed right-0">
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Your sites and profiles"} />
         <div className="h-[30px] text-lightGrey hover:text-accent_blue flex justify-center items-center cursor-pointer relative">

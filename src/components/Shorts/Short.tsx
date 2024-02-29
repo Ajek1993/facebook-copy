@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function Short({ person }: { person: Person }) {
   return (
-    <li className="relative cursor-pointer hover:before:absolute hover:before:block hover:before:h-full hover:before:w-full hover:before:bg-black hover:before:rounded-xl hover:before:opacity-10">
+    <div className="relative cursor-pointer hover:before:absolute hover:before:block hover:before:h-full hover:before:w-full hover:before:bg-black hover:before:rounded-xl hover:before:opacity-10">
       <Image
         src={person.picture}
         width={40}
@@ -16,11 +16,11 @@ export default function Short({ person }: { person: Person }) {
         width={140}
         height={240}
         alt="user short"
-        className="rounded-xl h-[240px]"
+        className="rounded-xl h-[240px] min-w-[140px]"
       />
       <p className="absolute bottom-1 left-2">
         {person.name} {person.lastname}
       </p>
-    </li>
+    </div>
   );
 }
