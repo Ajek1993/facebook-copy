@@ -14,7 +14,7 @@ export default function BookmarksItem({ name, path, picture }: AppProps) {
     <Link href={path}>
       <div className="h-[50px] flex items-center px-4 py-6 gap-4 rounded-lg hover:bg-darkGrey">
         <div className="w-[25px] h-[25px]">
-          <FontAwesomeIcon icon={picture} size="xl" />
+          <FontAwesomeIcon icon={picture} className="h-full" />
         </div>
         <p>{name}</p>
       </div>

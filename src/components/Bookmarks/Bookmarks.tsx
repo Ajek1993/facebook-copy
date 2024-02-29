@@ -70,7 +70,7 @@ export default function Bookmarks() {
             onClick={() => setVisibleBookmark(numOfBookmarks)}
           >
             <div className="w-[25px] h-[25px]">
-              <FontAwesomeIcon icon={faCaretDown} size="xl" />
+              <FontAwesomeIcon icon={faCaretDown} className="h-full" />
             </div>
             <p>Show more</p>
           </div>
@@ -80,7 +80,7 @@ export default function Bookmarks() {
             onClick={() => setVisibleBookmark(5)}
           >
             <div className="w-[25px] h-[25px]">
-              <FontAwesomeIcon icon={faCaretUp} size="xl" />
+              <FontAwesomeIcon icon={faCaretUp} className="h-full" />
             </div>
             <p>Show less</p>
           </div>

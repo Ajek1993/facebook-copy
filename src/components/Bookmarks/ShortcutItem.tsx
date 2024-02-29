@@ -11,7 +11,7 @@ export default function ShortcutItem({ name, picture }: AppProps) {
   return (
     <div className="h-[50px] flex items-center px-4 py-6 gap-4 rounded-lg hover:bg-darkGrey cursor-pointer">
       <div className="w-[25px] h-[25px]">
-        <FontAwesomeIcon icon={picture} size="xl" />
+        <FontAwesomeIcon icon={picture} className="h-full" />
       </div>
       <p>{name}</p>
     </div>
