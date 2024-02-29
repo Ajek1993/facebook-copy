@@ -2,7 +2,7 @@ interface Post {
   _id: number;
   user: Person;
   caption?: string;
-  image?: string;
+  image?: StaticImport;
   likes: number;
   comments: number;
   shares: number;

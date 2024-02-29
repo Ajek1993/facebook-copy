@@ -51,7 +51,7 @@ export default function RightSideBar() {
         {persons.map((person, id) => (
           <li
             key={id}
-            className="flex items-center py-3 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
+            className="flex items-center py-2.5 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
           >
             <Image
               src={person.picture}

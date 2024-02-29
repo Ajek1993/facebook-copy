@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function Short({ person }: any) {
+export default function Short({ person }: { person: Person }) {
   return (
     <li className="relative cursor-pointer hover:before:absolute hover:before:block hover:before:h-full hover:before:w-full hover:before:bg-black hover:before:rounded-xl hover:before:opacity-10">
       <Image

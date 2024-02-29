@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="h-[60px] flex items-center justify-between p-2 bg-secondary_darkGrey">
+      <header className="h-[60px] flex items-center justify-between p-2 bg-secondary_darkGrey sticky top-0 z-20 border-b-[1px] border-solid border-lightGrey border-opacity-40">
         <div className="h-full flex items-center justify-center gap-1">
           <div>
             <Link href={"/"}>

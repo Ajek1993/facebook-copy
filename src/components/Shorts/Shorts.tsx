@@ -8,7 +8,7 @@ import Short from "./Short";
 export default function Shorts() {
   const [shortsPage, setShortsPage] = useState(0);
   return (
-    <ul className="py-4 flex justify-center gap-2 gap-y-6 max-w-[750px] h-[270px] overflow-hidden">
+    <ul className="py-4 flex justify-center gap-2 gap-y-6 max-w-[750px] h-[270px] overflow-hidden relative">
       {shortsPage > 0 && (
         <span
           className="absolute z-10 left-4 top-[138px] -translate-y-[50%]"
