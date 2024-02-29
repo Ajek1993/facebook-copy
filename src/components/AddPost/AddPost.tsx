@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import GreySeparator from "../common/GreySeparator";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFaceLaugh,
   faImage,

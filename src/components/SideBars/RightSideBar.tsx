@@ -1,7 +1,6 @@
 import React from "react";
 import Heading from "../Heading";
 import Image from "next/image";
-import * as regular from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
