@@ -9,7 +9,7 @@ type AppProps = {
 export default function CircularButton({ font }: AppProps) {
   return (
     <li>
-      <div className="h-[45px] w-[45px] flex items-center justify-center p-2 bg-darkGrey hover:bg-secondary_darkGrey rounded-full cursor-pointer">
+      <div className="h-[45px] w-[45px] flex items-center justify-center p-2 bg-darkGrey hover:opacity-75 rounded-full cursor-pointer">
         <FontAwesomeIcon icon={font} className="h-3/4" />
       </div>
     </li>
