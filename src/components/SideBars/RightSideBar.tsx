@@ -10,6 +10,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import { persons } from "@/data/persons.js";
+import GreySeparator from "../common/GreySeparator";
 
 export default function RightSideBar() {
   return (
@@ -23,7 +24,7 @@ export default function RightSideBar() {
           />
         </div>
       </div>
-      <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
+      <GreySeparator />
       <div className="mt-4">
         <Heading title={"Birthdays"} />
         <div className="flex items-center gap-4 px-2">
@@ -33,7 +34,7 @@ export default function RightSideBar() {
           <p>John Smith has birthday today</p>
         </div>
       </div>
-      <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
+      <GreySeparator />
       <div className="mt-4 flex justify-between items-center relative">
         <Heading title={"Contacts"} />
         <div className="h-[30px] flex items-center gap-4 text-lightGrey absolute right-2">
@@ -55,7 +56,7 @@ export default function RightSideBar() {
             className="flex items-center py-3 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
           >
             <Image
-              src={"https://picsum.photos/50/50"}
+              src={person.picture}
               width={35}
               height={35}
               alt="userPhoto"
@@ -67,7 +68,7 @@ export default function RightSideBar() {
           </li>
         ))}
       </ul>
-      <div className="w-full h-0.5 my-1 bg-darkGrey"></div>
+      <GreySeparator />
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Group coversations"} />
       </div>

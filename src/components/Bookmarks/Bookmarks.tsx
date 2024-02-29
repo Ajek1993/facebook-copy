@@ -20,6 +20,7 @@ import {
 import * as regular from "@fortawesome/free-regular-svg-icons";
 import ShortcutItem from "./ShortcutItem";
 import Heading from "../Heading";
+import GreySeparator from "../common/GreySeparator";
 
 interface Bookmark {
   name: string;
@@ -86,7 +87,7 @@ export default function Bookmarks() {
           </div>
         )}
       </li>
-      <div className="w-full h-0.5 my-2 bg-darkGrey"></div>
+      <GreySeparator />
       <Heading title={"Your shortcuts"} />
       {shortcuts.map((shortcut, id) => (
         <li key={id}>

@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { persons } from "@/data/persons";
 import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
-import ShortPaginationButton from "../buttons/ShortPaginationButton";
+import ShortPaginationButton from "../common/buttons/ShortPaginationButton";
 import Short from "./Short";
 
 type Person = {
