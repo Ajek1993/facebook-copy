@@ -16,7 +16,7 @@ export default function Short({ person }: any) {
         width={140}
         height={240}
         alt="user short"
-        className="rounded-xl"
+        className="rounded-xl h-[240px]"
       />
       <p className="absolute bottom-1 left-2">
         {person.name} {person.lastname}
