@@ -9,7 +9,7 @@ export default function App() {
     <>
       <main className="w-full flex justify-between ">
         <LeftSideBar />
-        <section className="mx-16 max-w-[800px]relative">
+        <section className="mx-16 max-w-[800px] relative">
           <Shorts />
           <AddPost />
           <Posts />
