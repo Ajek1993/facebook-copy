@@ -7,7 +7,7 @@ import RightSideBar from "@/components/SideBars/RightSideBar";
 export default function App() {
   return (
     <>
-      <main className="flex justify-between">
+      <main className="flex justify-center">
         <LeftSideBar />
         <div className="w-[300px] hidden xl:block"></div>
         <section className="max-w-[800px] min-w-[350px] relative">
