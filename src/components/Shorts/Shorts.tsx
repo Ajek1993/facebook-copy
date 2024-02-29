@@ -5,13 +5,6 @@ import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
 import ShortPaginationButton from "../common/buttons/ShortPaginationButton";
 import Short from "./Short";
 
-type Person = {
-  name: string;
-  lastname: string;
-  picture: string;
-  short: string;
-};
-
 export default function Shorts() {
   const [shortsPage, setShortsPage] = useState(0);
   return (

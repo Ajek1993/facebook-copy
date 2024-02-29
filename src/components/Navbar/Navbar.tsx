@@ -23,12 +23,7 @@ import {
 import CircularButton from "../common/buttons/CircularButton";
 import NavigationButton from "../common/buttons/NavigationButton";
 
-interface Button {
-  path: string;
-  font: regular.IconDefinition;
-}
-
-const NAV_BUTTONS: Button[] = [
+const NAV_BUTTONS: NavButton[] = [
   { path: "/", font: faHouse },
   { path: "/movies", font: faFilm },
   { path: "/marketplace", font: faStore },
@@ -36,7 +31,7 @@ const NAV_BUTTONS: Button[] = [
   { path: "/games", font: faGamepad },
 ];
 
-const CIRCULAR_BUTTONS: Button[] = [
+const CIRCULAR_BUTTONS: NavButton[] = [
   { path: "Menu", font: faEllipsis },
   { path: "Messenger", font: faFacebookMessenger },
   { path: "Notifications", font: faBell },

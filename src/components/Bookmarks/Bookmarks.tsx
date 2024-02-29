@@ -17,16 +17,9 @@ import {
   faStore,
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
-import * as regular from "@fortawesome/free-regular-svg-icons";
 import ShortcutItem from "./ShortcutItem";
 import Heading from "../Heading";
 import GreySeparator from "../common/GreySeparator";
-
-interface Bookmark {
-  name: string;
-  path: string;
-  picture: regular.IconDefinition;
-}
 
 type Shortcut = Omit<Bookmark, "path">;
 
