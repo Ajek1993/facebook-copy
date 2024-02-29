@@ -15,7 +15,6 @@ import {
   faMagnifyingGlass,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import * as regular from "@fortawesome/free-regular-svg-icons";
 import {
   faFacebook,
   faFacebookMessenger,

@@ -6,7 +6,7 @@ import {
   faImage,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
-import { persons } from "@/data/persons";
+import { persons } from "@/data/persons.ts";
 import AddPostIcon from "./AddPostIcon";
 
 export default function AddPost() {

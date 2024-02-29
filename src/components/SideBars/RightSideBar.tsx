@@ -7,8 +7,7 @@ import {
   faGift,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-
-import { persons } from "@/data/persons.js";
+import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
 
 export default function RightSideBar() {

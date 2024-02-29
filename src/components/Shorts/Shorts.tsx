@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { persons } from "@/data/persons";
+import { persons } from "@/data/persons.ts";
 import { faGreaterThan, faLessThan } from "@fortawesome/free-solid-svg-icons";
 import ShortPaginationButton from "../common/buttons/ShortPaginationButton";
 import Short from "./Short";
