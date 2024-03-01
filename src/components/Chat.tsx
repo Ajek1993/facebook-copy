@@ -27,13 +27,13 @@ export default function Chat() {
     <div className="mx-auto max-w-3xl w-[450px]">
       <h1>In progress: chat</h1>
       <div className="mt-3 w-full max-w-lg rounded-2xl border">
-        <ScrollArea className="h-[450px] w-full p-4" ref={ref}>
+        <ScrollArea className="h-[450px] w-full p-4 overflow-y-auto" ref={ref}>
           {error && <div className="text-sm text-red">{error.message}</div>}
           {messages.map((message) => (
             <ul key={message.id}>
               {message.role === "user" && (
                 <li className="flex justify-end my-2">
-                  <p className="bg-accent_blue px-3 py-2 rounded-lg">
+                  <p className="bg-accent_blue px-3 py-2 rounded-lg max-w-3/4">
                     {message.content}
                   </p>
                 </li>
@@ -50,7 +50,7 @@ export default function Chat() {
                     />
                   </div>
 
-                  <p className="bg-darkGrey px-3 py-2 rounded-lg">
+                  <p className="bg-darkGrey px-3 py-2 rounded-lg max-w-3/4">
                     {message.content}
                   </p>
                 </li>
@@ -68,7 +68,7 @@ export default function Chat() {
             value={input}
             onChange={handleInputChange}
             placeholder="Ask me something"
-            className="px-4 py-2 rounded-full text-sm w-full m-2 bg-darkGrey"
+            className="px-4 pt-2 pb-1 rounded-full text-sm w-full m-2 bg-darkGrey"
           />
           {/* <p>L</p> */}
           {/* <button
