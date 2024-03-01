@@ -64,7 +64,7 @@ export default function Chat({}) {
                     />
                   </div>
 
-                  <p className="bg-darkGrey px-4 py-3 rounded-3xl max-w-[75%]">
+                  <p className="bg-darkGrey px-4 py-2 rounded-3xl max-w-[75%]">
                     {message.content}
                   </p>
                 </li>
