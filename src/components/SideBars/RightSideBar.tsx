@@ -9,10 +9,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
+import "./Scroll.css";
 
 export default function RightSideBar() {
   return (
-    <aside className="w-[350px] h-screen min-w-[250px] hidden lg:block hover:overflow-y-scroll overflow-hidden fixed right-0">
+    <aside className="w-[350px] min-w-[250px] hidden lg:block overflow-y-scroll fixed right-0">
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Your sites and profiles"} />
         <div className="h-[30px] text-lightGrey hover:text-accent_blue flex justify-center items-center cursor-pointer relative">

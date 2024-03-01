@@ -7,8 +7,6 @@ import Short from "./Short";
 
 export default function Shorts() {
   const [shortsPage, setShortsPage] = useState(0);
-  console.log(shortsPage);
-  console.log(persons.length);
   return (
     <ul
       className={`py-4 flex justify-${
