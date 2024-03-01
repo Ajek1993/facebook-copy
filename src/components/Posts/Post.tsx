@@ -16,6 +16,9 @@ export default function Post({ post }: { post: Post }) {
   const { name, lastname, picture } = post.user;
 
   const [postOpen, setPostOpen] = useState(true);
+  const [likes, setLikes] = useState(post.likes);
+  const [isLike, setIsLike] = useState(false);
+
   return (
     <article className="my-2 bg-secondary_darkGrey rounded-lg">
       <div className="px-3 py-1 flex justify-between items-center">
@@ -57,7 +60,10 @@ export default function Post({ post }: { post: Post }) {
           <Image src={post.image} width={732} height={400} alt="user post" />
 
           <div className="p-3 flex justify-between items-center ">
-            <div>{post.likes} people likes</div>
+            <div>
+              {isLike && <span>You and </span>}
+              {likes} {isLike && <span>other</span>} people likes
+            </div>
             <div className="flex gap-3">
               <p>{post.comments} comments</p>
               <p>{post.shares} shares</p>
@@ -67,7 +73,13 @@ export default function Post({ post }: { post: Post }) {
             <GreySeparator />
           </div>
           <div className="px-2 pb-1 flex justify-between items-center">
-            <PostButton text={"Like"} icon={faThumbsUp} />
+            <PostButton
+              text={"Like"}
+              icon={faThumbsUp}
+              setLikes={setLikes}
+              isLike={isLike}
+              setIsLike={setIsLike}
+            />
             <PostButton text={"Comment"} icon={faComment} />
             <PostButton text={"Share"} icon={faShare} />
           </div>

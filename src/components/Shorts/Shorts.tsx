@@ -7,6 +7,7 @@ import Short from "./Short";
 
 export default function Shorts() {
   const [shortsPage, setShortsPage] = useState(0);
+
   return (
     <ul
       className={`py-4 flex justify-${
