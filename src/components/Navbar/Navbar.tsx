@@ -89,13 +89,13 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <nav className="hidden xl:flex grow justify-center">
+        <nav className="mainNav hidden xl:flex grow justify-center">
           {NAV_BUTTONS.map((button, id) => (
             <NavigationButton key={id} font={button.font} path={button.path} />
           ))}
         </nav>
         <div>
-          <ul className="flex gap-2">
+          <ul className="sideNav flex gap-2 mr-2">
             {CIRCULAR_BUTTONS.map((button, id) => (
               <CircularButton key={id} font={button.font} />
             ))}

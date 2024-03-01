@@ -10,7 +10,7 @@ export default function App() {
       <main className="flex justify-center">
         <LeftSideBar />
         <div className="w-[300px] hidden xl:block"></div>
-        <section className="max-w-[800px] min-w-[350px] relative">
+        <section className="max-w-[800px] min-w-[350px] relative mt-2">
           <Shorts />
           <AddPost />
           <Posts />
