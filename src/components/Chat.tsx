@@ -4,8 +4,9 @@ import React, { useEffect, useRef } from "react";
 import { useChat } from "ai/react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Image from "next/image";
+import GreySeparator from "./common/GreySeparator";
 
-export default function Chat() {
+export default function Chat({}) {
   const ref = useRef<HTMLDivElement>(null);
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } =
     useChat({
@@ -24,16 +25,29 @@ export default function Chat() {
   }, [messages]);
 
   return (
-    <div className="mx-auto max-w-3xl w-[450px]">
-      <h1>In progress: chat</h1>
-      <div className="mt-3 w-full max-w-lg rounded-2xl border">
-        <ScrollArea className="h-[450px] w-full p-4 overflow-y-auto" ref={ref}>
+    <div className="mx-auto max-w-3xl w-[350px]">
+      <div className="mt-3 w-full max-w-lg rounded-xl bg-secondary_darkGrey">
+        <div className="flex items-center py-2.5 px-2 gap-2 hover:bg-darkGrey cursor-pointer rounded-md w-1/2 -mb-1">
+          <Image
+            src={"https://picsum.photos/50/50"}
+            width={35}
+            height={35}
+            alt="userPhoto"
+            className="rounded-full"
+          />
+          <p>John Smith</p>
+        </div>
+        <GreySeparator />
+        <ScrollArea
+          className="h-[350px] w-full p-4 overflow-y-auto text-sm"
+          ref={ref}
+        >
           {error && <div className="text-sm text-red">{error.message}</div>}
           {messages.map((message) => (
             <ul key={message.id}>
               {message.role === "user" && (
                 <li className="flex justify-end my-2">
-                  <p className="bg-accent_blue px-3 py-2 rounded-lg max-w-3/4">
+                  <p className="bg-accent_blue px-4 py-2 rounded-3xl max-w-[75%]">
                     {message.content}
                   </p>
                 </li>
@@ -50,7 +64,7 @@ export default function Chat() {
                     />
                   </div>
 
-                  <p className="bg-darkGrey px-3 py-2 rounded-lg max-w-3/4">
+                  <p className="bg-darkGrey px-4 py-3 rounded-3xl max-w-[75%]">
                     {message.content}
                   </p>
                 </li>
@@ -68,7 +82,7 @@ export default function Chat() {
             value={input}
             onChange={handleInputChange}
             placeholder="Ask me something"
-            className="px-4 pt-2 pb-1 rounded-full text-sm w-full m-2 bg-darkGrey"
+            className="px-4 pt-2 pb-1 rounded-full text-sm w-full m-2 bg-darkGrey outline-none"
           />
           {/* <p>L</p> */}
           {/* <button

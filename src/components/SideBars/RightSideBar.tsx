@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import Heading from "../Heading";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +13,11 @@ import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
 import "./Scroll.css";
 
-export default function RightSideBar() {
+export default function RightSideBar({ setOpenChat }: any) {
+  const handleClick = (id: number): void => {
+    id === 0 && setOpenChat((prev: boolean) => !prev);
+  };
+
   return (
     <aside className="w-[350px] min-w-[250px] hidden lg:block overflow-y-scroll fixed right-0">
       <div className="mt-4 flex justify-between items-center">
@@ -53,6 +59,7 @@ export default function RightSideBar() {
           <li
             key={id}
             className="flex items-center py-2.5 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
+            onClick={() => handleClick(id)}
           >
             <Image
               src={person.picture}

@@ -1,10 +1,16 @@
+"use client";
+import React, { useState } from "react";
+
 import AddPost from "@/components/AddPost/AddPost";
+import Chat from "@/components/Chat";
 import Posts from "@/components/Posts/Posts";
 import Shorts from "@/components/Shorts/Shorts";
 import LeftSideBar from "@/components/SideBars/LeftSideBar";
 import RightSideBar from "@/components/SideBars/RightSideBar";
 
 export default function App() {
+  const [openChat, setOpenChat] = useState(false);
+
   return (
     <>
       <main className="flex justify-center">
@@ -16,7 +22,8 @@ export default function App() {
           <Posts />
         </section>
         <div className="w-[400px] hidden lg:block"></div>
-        <RightSideBar />
+        <RightSideBar setOpenChat={setOpenChat} />
+        <div className="fixed bottom-0 right-10">{openChat && <Chat />}</div>
       </main>
     </>
   );
