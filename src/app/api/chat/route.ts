@@ -21,7 +21,6 @@ export async function POST(req: Request) {
     });
 
     const stream = OpenAIStream(response);
-
     return new StreamingTextResponse(stream);
   } catch (error: any) {
     return new NextResponse(error.message || "Something went wrong", {
