@@ -33,7 +33,7 @@ export default function AddPost() {
       <GreySeparator />
       <ul className="flex justify-between items-center text-lightGrey">
         <AddPostIcon icon={faVideo} text={"Broadcast"} color={"red"} />
-        <span className="hidden md:block">
+        <span className="hidden md:flex grow">
           <AddPostIcon icon={faImage} text={"Picture/movie"} color={"green"} />
         </span>
         <AddPostIcon
