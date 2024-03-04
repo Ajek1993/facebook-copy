@@ -5,6 +5,7 @@ import { useChat } from "ai/react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Image from "next/image";
 import GreySeparator from "./common/GreySeparator";
+import axios from "axios";
 
 export default function Chat({}) {
   const ref = useRef<HTMLDivElement>(null);
@@ -24,6 +25,9 @@ export default function Chat({}) {
     ref.current.scrollTo(0, ref.current.scrollHeight);
   }, [messages]);
 
+  const sendData = async (data: any) => {
+    !isLoading && axios.post("http://localhost:3001/test", { data });
+  };
   return (
     <div className="mx-auto max-w-3xl w-[350px]">
       <div className="mt-3 w-full max-w-lg rounded-xl bg-secondary_darkGrey">
@@ -43,34 +47,37 @@ export default function Chat({}) {
           ref={ref}
         >
           {error && <div className="text-sm text-red">{error.message}</div>}
-          {messages.map((message) => (
-            <ul key={message.id}>
-              {message.role === "user" && (
-                <li className="flex justify-end my-2">
-                  <p className="bg-accent_blue px-4 py-2 rounded-3xl max-w-[75%]">
-                    {message.content}
-                  </p>
-                </li>
-              )}
-              {message.role === "assistant" && (
-                <li className="flex justify-start items-end gap-3 my-2">
-                  <div className="w-[40px] h-[40px] min-w-[40px]">
-                    <Image
-                      src={"https://picsum.photos/68/68"}
-                      width={40}
-                      height={40}
-                      alt="userPhoto"
-                      className="rounded-full"
-                    />
-                  </div>
+          {messages.map((message) => {
+            sendData(message);
+            return (
+              <ul key={message.id}>
+                {message.role === "user" && (
+                  <li className="flex justify-end my-2">
+                    <p className="bg-accent_blue px-4 py-2 rounded-3xl max-w-[75%]">
+                      {message.content}
+                    </p>
+                  </li>
+                )}
+                {message.role === "assistant" && (
+                  <li className="flex justify-start items-end gap-3 my-2">
+                    <div className="w-[40px] h-[40px] min-w-[40px]">
+                      <Image
+                        src={"https://picsum.photos/68/68"}
+                        width={40}
+                        height={40}
+                        alt="userPhoto"
+                        className="rounded-full"
+                      />
+                    </div>
 
-                  <p className="bg-darkGrey px-4 py-2 rounded-3xl max-w-[75%]">
-                    {message.content}
-                  </p>
-                </li>
-              )}
-            </ul>
-          ))}
+                    <p className="bg-darkGrey px-4 py-2 rounded-3xl max-w-[75%]">
+                      {message.content}
+                    </p>
+                  </li>
+                )}
+              </ul>
+            );
+          })}
         </ScrollArea>
 
         <form onSubmit={handleSubmit} className="flex justify-center">
