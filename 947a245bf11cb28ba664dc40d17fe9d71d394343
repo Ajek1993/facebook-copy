@@ -1,0 +1,308 @@
+[33mcommit b2fd178891b8f7fd1226a8cb8bc47301a0e7cff1[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Arkadiusz Sarach <ajek1993@gmail.com>
+Date:   Mon Mar 4 19:11:43 2024 +0100
+
+    server disabled
+
+[33mcommit a7ac89b29ee868a37254b3919ac12a9c418aa447[m
+Author: Arkadiusz Sarach <ajek1993@gmail.com>
+Date:   Mon Mar 4 19:03:32 2024 +0100
+
+    api direction change
+
+[33mcommit 6d8b524e669d60d3b57b53289c53911e67cff3d0[m
+Author: Arkadiusz Sarach <ajek1993@gmail.com>
+Date:   Mon Mar 4 17:31:34 2024 +0100
+
+    add history of chat display
+
+[33mcommit f5df76b36acd6728d10bba5bd1963b6428f89aca[m
+Author: Arkadiusz Sarach <ajek1993@gmail.com>
+Date:   Mon Mar 4 17:17:20 2024 +0100
+
+    add server function to save messages data
+
+[33mcommit c6e790f8ee48c31629e2ecaf1af3ee0aa1d1ca37[m
+Author: Arkadiusz Sarach <ajek1993@gmail.com>
+Date:   Mon Mar 4 14:56:59 2024 +0100
+
+    add server
+
+[33mcommit 947a245bf11cb28ba664dc40d17fe9d71d394343[m[33m ([m[1;31morigin/backup[m[33m, [m[1;32mbackup[m[33m)[m
+Author: Arkadiusz Sarach <ajek1993@gmail.com>
+Date:   Mon Mar 4 10:41:55 2024 +0100
+
+    fix button size
+
+[33mcommit f58ee9eb4c1948da4223e3954146c1c9bf709f29[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 19:49:01 2024 +0100
+
+    bug fix
+
+[33mcommit 517cd7de1d7eb89317de9b820a3a7df03d985cda[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 19:44:54 2024 +0100
+
+    delete some files
+
+[33mcommit b47bf41c24aacd509d070371efa917ce44fbe846[m
+Merge: c1c5fcc 56c7f0a
+Author: Arkadiusz Sarach <125748724+Ajek1993@users.noreply.github.com>
+Date:   Fri Mar 1 19:30:09 2024 +0100
+
+    Merge pull request #1 from Ajek1993/openai
+    
+    Add Openai chatbot
+
+[33mcommit 56c7f0a65253f2cdf14dcdf7e96f14403c922003[m[33m ([m[1;31morigin/openai[m[33m)[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 19:23:19 2024 +0100
+
+    add chat to website
+
+[33mcommit bced5042712280a2146a4d3bb3848ce8df51249f[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 18:49:39 2024 +0100
+
+    add scroll to chat
+
+[33mcommit 83eb9f540e698933ddff45c376fc71f948453bd8[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 18:42:45 2024 +0100
+
+    chat part of styling
+
+[33mcommit fad349ac7e4ab4a34c87a4ce6b931bbf5367c6be[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 17:47:41 2024 +0100
+
+    env delete
+
+[33mcommit 70a7c29f049063dd42cb0e2390e2ce15e936013d[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 17:43:38 2024 +0100
+
+    fix import
+
+[33mcommit 3950e347536d892c68c7faea5ba66bb9499da4ff[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 17:30:46 2024 +0100
+
+    gitignore change
+
+[33mcommit 58b47055c4aadedafb9463ccac10249f4f391437[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 15:23:47 2024 +0100
+
+    add czat ai alpfa version
+
+[33mcommit d2a83ba38db5961a86f6f1221de55f1e60505ad1[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 14:00:00 2024 +0100
+
+    initial configuration AI
+
+[33mcommit c1c5fccc9a508c0039c253a7b1bbaaf187f4e857[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 12:38:21 2024 +0100
+
+    add tooltips do main nav
+
+[33mcommit ea8d2b1363a342403f6ef966eab12acb89679c3b[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 11:37:18 2024 +0100
+
+    add like button behaviour
+
+[33mcommit 8a7ef0c91feb62c1f167420e4da474a22ba9d7f2[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 10:53:34 2024 +0100
+
+    fix add post buttons colors
+
+[33mcommit 11836a7f4167299b6e6498b0481582d7406bd248[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Fri Mar 1 10:45:17 2024 +0100
+
+    add style to scrollbar
+
+[33mcommit 4dcb358245e9d9d173439effe1af82d0071044b0[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 19:13:10 2024 +0100
+
+    fix bug
+
+[33mcommit c64b5fe7d28368fed335942c9196ff3fa709a56f[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 19:06:37 2024 +0100
+
+    add rwd behaviour
+
+[33mcommit df89397abecc0867f64f8bb5e8e77fe8c3999a19[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 18:03:48 2024 +0100
+
+    fixe bug
+
+[33mcommit 14e44d944a61040495db9d9414206f4f5345563f[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 17:39:56 2024 +0100
+
+    add post component
+
+[33mcommit 4cdb45e93cf84b60ed98865cda5d5222470d30c4[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 15:53:36 2024 +0100
+
+    change data imports
+
+[33mcommit a5db34e22d8d171f588c6b2fa4b3d7e8aa556978[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 15:47:47 2024 +0100
+
+    add types and post data
+
+[33mcommit d7da96533d08f90ac7a9993bebb1897b9a176ed4[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 15:15:53 2024 +0100
+
+    delete some imports
+
+[33mcommit 09cb8da1f9acfb3c108c0ce03bfa6abbe531ef60[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 15:12:11 2024 +0100
+
+    change pictures sizes
+
+[33mcommit e2a2f85569d32d928f7acbc1c314815503dda353[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 14:43:57 2024 +0100
+
+    change some details about styling
+
+[33mcommit 5d93ed6111e36c6a0e53bbbb5ed71b07d5c7b6b4[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 14:13:04 2024 +0100
+
+    add addPost component, change part of files structures
+
+[33mcommit 17e393c7ffb468391bcbcb628867716b2886f094[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 13:16:14 2024 +0100
+
+    add short component
+
+[33mcommit c440d2970a70d51b62ffdbab96cfe11922c3c40a[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 12:38:38 2024 +0100
+
+    add shorts button
+
+[33mcommit 272d320ed7940383dc7f20b5510e52d4b28a9f16[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 11:49:06 2024 +0100
+
+    add shorts section, change colors
+
+[33mcommit 98f10eca76fe365c821da94806505507558f1701[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Thu Feb 29 10:12:06 2024 +0100
+
+    fix icons size
+
+[33mcommit 42586b983b035fedc87116fe439532f6ac3cda8b[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 17:06:27 2024 +0100
+
+    add scroll
+
+[33mcommit 384869d7c5f8ccf25c55681865c45bf4124770a2[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 16:48:20 2024 +0100
+
+    add contacts
+
+[33mcommit 24ff6fa29385291a8f3bbbf7f3437ffbd4ace6e2[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 16:05:38 2024 +0100
+
+    add part of rightsidebar
+
+[33mcommit 84c647946960d19e8836196a0b33f204d2b68276[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 15:30:43 2024 +0100
+
+    add footer
+
+[33mcommit da8e2924124edd466c2c6bbad9dc13f905285a71[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 15:06:18 2024 +0100
+
+    add payment bookmark
+
+[33mcommit 201c19f63869091bb22d13ef3c64ff23dcc6fe15[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 14:55:53 2024 +0100
+
+    add more&less button
+
+[33mcommit bd9689148d70a59fbeaf7480c1b86df0cac14979[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 14:36:55 2024 +0100
+
+    add shortcuts
+
+[33mcommit 6b6b73108300d0ff66436cd302ff247ef4b0f38d[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 13:52:55 2024 +0100
+
+    add main menu
+
+[33mcommit fce84c1e29318197aff36238a3880c035ca9f803[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 12:59:40 2024 +0100
+
+    add hamburger menu
+
+[33mcommit 3e6a7c6a3732d231460d632db5aac509b1b45317[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Wed Feb 28 12:14:29 2024 +0100
+
+    create Button Components
+
+[33mcommit 12a137b47ed63a2366a27f2a7d5895ebcb9d3906[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Tue Feb 27 18:38:55 2024 +0100
+
+    finish desktop navbar
+
+[33mcommit cafcd76914ba7f5ed1c685e294d642d1103b3248[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Tue Feb 27 17:46:44 2024 +0100
+
+    add second part of header
+
+[33mcommit db9a15ab32beba8ceb0103d9ac67fb780a456a4d[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Tue Feb 27 16:02:28 2024 +0100
+
+    add part of header
+
+[33mcommit 2ebd89b1e3fead6fbb786b0f3d95686744a9af72[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Tue Feb 27 13:57:15 2024 +0100
+
+    add initial structure of files
+
+[33mcommit 0516766073a8c6015d6fc7397b2f118f687e0619[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Tue Feb 27 13:47:01 2024 +0100
+
+    initial settings
+
+[33mcommit f1aef2ecabbde78e53231da75859ca54f13156e2[m
+Author: ajek1993@gmail.com <ajek1993@gmail.com>
+Date:   Tue Feb 27 13:16:16 2024 +0100
+
+    Initial commit from Create Next App
