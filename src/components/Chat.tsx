@@ -6,6 +6,7 @@ import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Image from "next/image";
 import GreySeparator from "./common/GreySeparator";
 import axios from "axios";
+import PreviousChat from "./PreviousChat";
 
 export default function Chat({}) {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,6 +48,7 @@ export default function Chat({}) {
           ref={ref}
         >
           {error && <div className="text-sm text-red">{error.message}</div>}
+          <PreviousChat />
           {messages.map((message) => {
             sendData(message);
             return (
