@@ -1,13 +1,15 @@
 import React from "react";
 import Post from "./Post";
-import { posts } from "@/data/posts";
+import { useFirebase } from "@/providers/FirebaseProvider";
 
-export default function Posts() {
+export default function asyncPosts() {
+  const { posts } = useFirebase();
+
   return (
     <>
-      {posts.map((post, id) => (
-        <Post post={post} key={id} />
-      ))}
+      {!posts && <p>Loading...</p>}
+      {posts &&
+        posts.map((post: Post, id: number) => <Post post={post} key={id} />)}
     </>
   );
 }

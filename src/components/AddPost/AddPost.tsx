@@ -12,7 +12,7 @@ import { useFirebase } from "@/providers/FirebaseProvider";
 
 export default function AddPost() {
   const { picture, name } = persons[0];
-  const { addPost } = useFirebase();
+  const { addPost, setPosts } = useFirebase();
 
   const [post, setPost] = useState({
     _id: "",
@@ -35,6 +35,7 @@ export default function AddPost() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     addPost(post);
+    setPosts((prev: Post[]) => [post, ...prev]);
     setPost({
       _id: "",
       user: {

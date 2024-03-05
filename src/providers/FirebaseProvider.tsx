@@ -1,8 +1,14 @@
 "use client";
 
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { db, app } from "../../firebase";
-import { collection, addDoc, updateDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  updateDoc,
+  doc,
+  getDocs,
+} from "firebase/firestore";
 
 const FirebaseContext = createContext<any>({} as any);
 
@@ -20,9 +26,33 @@ const addPost = async (post: Post) => {
   }
 };
 
-export default function ChatProvider({ children }: any) {
+export default function FirebasaeProvider({ children }: any) {
+  const [posts, setPosts] = useState(null);
+
+  useEffect(() => {
+    const get = async () => {
+      const postsCollection = collection(db, "posts");
+      const querySnapshotPosts = await getDocs(postsCollection);
+
+      const newPosts = [];
+      querySnapshotPosts.forEach((post) => {
+        const postInfo = post.data();
+        postInfo["createdAt"] = postInfo["createdAt"].toDate();
+        newPosts.push(postInfo);
+      });
+
+      console.log(newPosts);
+      setPosts(newPosts.sort((a, b) => +b.caption - +a.caption));
+    };
+    get();
+  }, []);
+
+  // useEffect(() => {
+  //   setPosts((prev) => prev.sort((a, b) => +b.caption - +a.caption));
+  // }, [posts]);
+
   return (
-    <FirebaseContext.Provider value={{ addPost }}>
+    <FirebaseContext.Provider value={{ addPost, posts, setPosts }}>
       {children}
     </FirebaseContext.Provider>
   );
