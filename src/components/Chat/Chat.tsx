@@ -9,11 +9,17 @@ import {
   faPhone,
   faVideo,
   faWindowMaximize,
+  faWindowMinimize,
   faXmark,
+  faCircleArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import ChatButton from "./ChatButton";
+import { useChatSetting } from "@/providers/ChatProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Chat({}) {
+  const { chatMinimize } = useChatSetting();
+
   const ref = useRef<HTMLDivElement>(null);
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } =
     useChat({
@@ -32,7 +38,11 @@ export default function Chat({}) {
   }, [messages]);
 
   return (
-    <div className="mx-auto max-w-3xl w-[350px]">
+    <div
+      className={`mx-auto max-w-3xl ${
+        chatMinimize ? "w-[200px]" : "w-[320px]"
+      }`}
+    >
       <div className="mt-3 w-full max-w-lg rounded-xl bg-secondary_darkGrey">
         <div className="flex justify-between -mb-1">
           <div className="flex items-center py-2.5 px-2 gap-2 hover:bg-darkGrey cursor-pointer rounded-md w-1/2 ">
@@ -43,72 +53,82 @@ export default function Chat({}) {
               alt="userPhoto"
               className="rounded-full"
             />
-            <p>John Smith</p>
+            {!chatMinimize && <p>John Smith</p>}
           </div>
           <div className="flex items-center px-2">
             <ChatButton icon={faPhone} />
             <ChatButton icon={faVideo} />
-            <ChatButton icon={faWindowMaximize} />
-            <ChatButton icon={faXmark} />
+            {!chatMinimize && (
+              <ChatButton
+                icon={faWindowMinimize}
+                name="windowMinimize/Maximize"
+              />
+            )}
+            {chatMinimize && (
+              <ChatButton
+                icon={faWindowMaximize}
+                name="windowMinimize/Maximize"
+              />
+            )}
+            <ChatButton icon={faXmark} name="windowClose" />
           </div>
         </div>
 
-        <GreySeparator />
-        <ScrollArea
-          className="live_chat h-[350px] w-full p-4 overflow-y-auto text-sm"
-          ref={ref}
-        >
-          {error && <div className="text-sm text-red">{error.message}</div>}
-          {messages.map((message) => (
-            <ul key={message.id}>
-              {message.role === "user" && (
-                <li className="flex justify-end my-2">
-                  <p className="bg-accent_blue px-4 py-2 rounded-3xl max-w-[75%]">
-                    {message.content}
-                  </p>
-                </li>
-              )}
-              {message.role === "assistant" && (
-                <li className="flex justify-start items-end gap-3 my-2">
-                  <div className="w-[40px] h-[40px] min-w-[40px]">
-                    <Image
-                      src={"https://picsum.photos/68/68"}
-                      width={40}
-                      height={40}
-                      alt="userPhoto"
-                      className="rounded-full"
-                    />
-                  </div>
+        {!chatMinimize && <GreySeparator />}
+        {!chatMinimize && (
+          <ScrollArea
+            className="live_chat h-[330px] w-full p-4 overflow-y-auto text-sm"
+            ref={ref}
+          >
+            {error && <div className="text-sm text-red">{error.message}</div>}
+            {messages.map((message) => (
+              <ul key={message.id}>
+                {message.role === "user" && (
+                  <li className="flex justify-end my-2">
+                    <p className="bg-accent_blue px-4 py-2 rounded-3xl max-w-[75%]">
+                      {message.content}
+                    </p>
+                  </li>
+                )}
+                {message.role === "assistant" && (
+                  <li className="flex justify-start items-end gap-3 my-2">
+                    <div className="w-[40px] h-[40px] min-w-[40px]">
+                      <Image
+                        src={"https://picsum.photos/68/68"}
+                        width={40}
+                        height={40}
+                        alt="userPhoto"
+                        className="rounded-full"
+                      />
+                    </div>
 
-                  <p className="bg-darkGrey px-4 py-2 rounded-3xl max-w-[75%]">
-                    {message.content}
-                  </p>
-                </li>
-              )}
-            </ul>
-          ))}
-        </ScrollArea>
+                    <p className="bg-darkGrey px-4 py-2 rounded-3xl max-w-[75%]">
+                      {message.content}
+                    </p>
+                  </li>
+                )}
+              </ul>
+            ))}
+          </ScrollArea>
+        )}
 
-        <form onSubmit={handleSubmit} className="flex justify-center">
-          {/* <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p> */}
-          <input
-            value={input}
-            onChange={handleInputChange}
-            placeholder="Ask me something"
-            className="px-4 pt-2 pb-1 rounded-full text-sm w-full m-2 bg-darkGrey outline-none"
-          />
-          {/* <p>L</p> */}
-          {/* <button
+        {!chatMinimize && (
+          <form onSubmit={handleSubmit} className="flex justify-center">
+            <input
+              value={input}
+              onChange={handleInputChange}
+              placeholder="Aa"
+              className="px-4 pt-2 pb-1 rounded-full text-sm w-full m-2 bg-darkGrey outline-none"
+            />
+            <button
               type="submit"
               disabled={isLoading}
-              className="p-2 bg-slate-500"
+              className="text-accent_blue py-2 pr-2 w-[40px] flex items-center justify-center hover:brightness-150"
             >
-              Send
-            </button> */}
-        </form>
+              <FontAwesomeIcon icon={faCircleArrowRight} className="h-3/4" />
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

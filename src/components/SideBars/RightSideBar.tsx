@@ -11,10 +11,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
+import { useChatSetting } from "@/providers/ChatProvider";
 
-export default function RightSideBar({ setOpenChat }: any) {
+export default function RightSideBar() {
+  const { setChatOpen } = useChatSetting();
+
   const handleClick = (id: number): void => {
-    id === 0 && setOpenChat((prev: boolean) => !prev);
+    id === 0 && setChatOpen((prev: boolean) => !prev);
   };
 
   return (
