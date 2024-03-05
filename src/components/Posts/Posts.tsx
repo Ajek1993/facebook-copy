@@ -2,7 +2,7 @@ import React from "react";
 import Post from "./Post";
 import { useFirebase } from "@/providers/FirebaseProvider";
 
-export default function asyncPosts() {
+export default function Posts() {
   const { posts } = useFirebase();
 
   return (
