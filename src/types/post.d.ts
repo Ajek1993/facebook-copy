@@ -1,5 +1,5 @@
 interface Post {
-  _id: number;
+  _id: number | string;
   user: Person;
   caption?: string;
   image?: StaticImport;
