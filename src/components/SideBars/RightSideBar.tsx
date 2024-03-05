@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Heading from "../Heading";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,7 +11,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
-import "./Scroll.css";
 
 export default function RightSideBar({ setOpenChat }: any) {
   const handleClick = (id: number): void => {

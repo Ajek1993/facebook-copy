@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <>
-      <main className="flex justify-center">
+      <main className="flex justify-center relative mx-auto">
         <LeftSideBar />
         <div className="w-[300px] hidden xl:block"></div>
         <section className="max-w-[800px] min-w-[350px] relative mt-2">

@@ -39,7 +39,7 @@ export default function Chat({}) {
         </div>
         <GreySeparator />
         <ScrollArea
-          className="h-[350px] w-full p-4 overflow-y-auto text-sm"
+          className="live_chat h-[350px] w-full p-4 overflow-y-auto text-sm"
           ref={ref}
         >
           {error && <div className="text-sm text-red">{error.message}</div>}
