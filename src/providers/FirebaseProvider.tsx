@@ -34,7 +34,7 @@ export default function FirebasaeProvider({ children }: any) {
       const postsCollection = collection(db, "posts");
       const querySnapshotPosts = await getDocs(postsCollection);
 
-      const newPosts = [];
+      const newPosts: any[] = [];
       querySnapshotPosts.forEach((post) => {
         const postInfo = post.data();
         postInfo["createdAt"] = postInfo["createdAt"].toDate();
@@ -42,7 +42,9 @@ export default function FirebasaeProvider({ children }: any) {
       });
 
       console.log(newPosts);
-      setPosts(newPosts.sort((a, b) => +b.caption - +a.caption));
+      setPosts((prev): any => {
+        return newPosts.sort((a, b) => +b.caption - +a.caption);
+      });
     };
     get();
   }, []);
