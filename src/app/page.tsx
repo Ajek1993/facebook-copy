@@ -8,24 +8,27 @@ import Posts from "@/components/Posts/Posts";
 import Shorts from "@/components/Shorts/Shorts";
 import LeftSideBar from "@/components/SideBars/LeftSideBar";
 import RightSideBar from "@/components/SideBars/RightSideBar";
+import FirebaseProvider from "@/providers/FirebaseProvider";
 
 export default function App() {
   const { chatOpen } = useChatSetting();
 
   return (
     <>
-      <main className="flex justify-center relative mx-auto">
-        <LeftSideBar />
-        <div className="w-[300px] hidden xl:block"></div>
-        <section className="max-w-[800px] min-w-[350px] relative mt-2">
-          <Shorts />
-          <AddPost />
-          <Posts />
-        </section>
-        <div className="w-[400px] hidden lg:block"></div>
-        <RightSideBar />
-        <div className="fixed bottom-0 right-10">{chatOpen && <Chat />}</div>
-      </main>
+      <FirebaseProvider>
+        <main className="flex justify-center relative mx-auto">
+          <LeftSideBar />
+          <div className="w-[300px] hidden xl:block"></div>
+          <section className="max-w-[800px] min-w-[350px] relative mt-2">
+            <Shorts />
+            <AddPost />
+            <Posts />
+          </section>
+          <div className="w-[400px] hidden lg:block"></div>
+          <RightSideBar />
+          <div className="fixed bottom-0 right-10">{chatOpen && <Chat />}</div>
+        </main>
+      </FirebaseProvider>
     </>
   );
 }
