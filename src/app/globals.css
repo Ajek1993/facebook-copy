@@ -5,7 +5,7 @@
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-rgb: #1c1e21;
-  --accent_blue: "#025af2";
+  --accent_blue: "#0290F2";
 }
 
 body {
@@ -14,6 +14,7 @@ body {
 }
 
 /* Scrollbars */
+
 body::-webkit-scrollbar {
   width: 15px;
 }
@@ -24,6 +25,32 @@ body::-webkit-scrollbar-thumb {
   background: rgb(64, 64, 64);
 }
 body::-webkit-scrollbar-thumb:hover {
+  background: rgb(192, 192, 192);
+}
+
+aside::-webkit-scrollbar {
+  width: 10px;
+}
+aside::-webkit-scrollbar-track {
+  background: rgb(96, 96, 96);
+}
+aside::-webkit-scrollbar-thumb {
+  background: rgb(64, 64, 64);
+}
+aside::-webkit-scrollbar-thumb:hover {
+  background: rgb(192, 192, 192);
+}
+
+.live_chat::-webkit-scrollbar {
+  width: 10px;
+}
+.live_chat::-webkit-scrollbar-track {
+  background: rgb(96, 96, 96);
+}
+.live_chat::-webkit-scrollbar-thumb {
+  background: rgb(64, 64, 64);
+}
+.live_chat::-webkit-scrollbar-thumb:hover {
   background: rgb(192, 192, 192);
 }
 
@@ -55,6 +82,10 @@ body::-webkit-scrollbar-thumb:hover {
 }
 .sideNav li:nth-child(4) .sideBtn:after {
   content: "Account";
+}
+
+aside {
+  height: calc(100% - 60px);
 }
 
 @layer utilities {

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Heading from "../Heading";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,11 +11,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
-import "./Scroll.css";
+import { useChatSetting } from "@/providers/ChatProvider";
 
-export default function RightSideBar({ setOpenChat }: any) {
+export default function RightSideBar() {
+  const { setChatOpen } = useChatSetting();
+
   const handleClick = (id: number): void => {
-    id === 0 && setOpenChat((prev: boolean) => !prev);
+    id === 0 && setChatOpen((prev: boolean) => !prev);
   };
 
   return (
@@ -58,7 +60,7 @@ export default function RightSideBar({ setOpenChat }: any) {
         {persons.map((person, id) => (
           <li
             key={id}
-            className="flex items-center py-2.5 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
+            className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
             onClick={() => handleClick(id)}
           >
             <Image

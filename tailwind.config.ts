@@ -13,7 +13,7 @@ const config: Config = {
         darkGrey: "rgb(96,96,96)",
         secondary_darkGrey: "rgb(64,64,64)",
         lightGrey: "rgb(192,192,192)",
-        accent_blue: "#025af2",
+        accent_blue: "#0290F2",
         red: "rgb(255,0,0)",
         green: "rgb(0,255,0)",
         yellow: "rgb(255,255,0)",
