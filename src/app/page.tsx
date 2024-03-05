@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import AddPost from "@/components/AddPost/AddPost";
-import Chat from "@/components/Chat";
+import Chat from "@/components/Chat/Chat";
 import Posts from "@/components/Posts/Posts";
 import Shorts from "@/components/Shorts/Shorts";
 import LeftSideBar from "@/components/SideBars/LeftSideBar";

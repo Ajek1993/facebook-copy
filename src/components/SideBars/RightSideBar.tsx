@@ -57,7 +57,7 @@ export default function RightSideBar({ setOpenChat }: any) {
         {persons.map((person, id) => (
           <li
             key={id}
-            className="flex items-center py-2.5 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
+            className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
             onClick={() => handleClick(id)}
           >
             <Image

@@ -4,7 +4,14 @@ import React, { useEffect, useRef } from "react";
 import { useChat } from "ai/react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Image from "next/image";
-import GreySeparator from "./common/GreySeparator";
+import GreySeparator from "../common/GreySeparator";
+import {
+  faPhone,
+  faVideo,
+  faWindowMaximize,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import ChatButton from "./ChatButton";
 
 export default function Chat({}) {
   const ref = useRef<HTMLDivElement>(null);
@@ -27,16 +34,25 @@ export default function Chat({}) {
   return (
     <div className="mx-auto max-w-3xl w-[350px]">
       <div className="mt-3 w-full max-w-lg rounded-xl bg-secondary_darkGrey">
-        <div className="flex items-center py-2.5 px-2 gap-2 hover:bg-darkGrey cursor-pointer rounded-md w-1/2 -mb-1">
-          <Image
-            src={"https://picsum.photos/50/50"}
-            width={35}
-            height={35}
-            alt="userPhoto"
-            className="rounded-full"
-          />
-          <p>John Smith</p>
+        <div className="flex justify-between -mb-1">
+          <div className="flex items-center py-2.5 px-2 gap-2 hover:bg-darkGrey cursor-pointer rounded-md w-1/2 ">
+            <Image
+              src={"https://picsum.photos/50/50"}
+              width={35}
+              height={35}
+              alt="userPhoto"
+              className="rounded-full"
+            />
+            <p>John Smith</p>
+          </div>
+          <div className="flex items-center ">
+            <ChatButton icon={faPhone} />
+            <ChatButton icon={faVideo} />
+            <ChatButton icon={faWindowMaximize} />
+            <ChatButton icon={faXmark} />
+          </div>
         </div>
+
         <GreySeparator />
         <ScrollArea
           className="live_chat h-[350px] w-full p-4 overflow-y-auto text-sm"
