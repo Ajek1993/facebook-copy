@@ -45,7 +45,7 @@ export default function Chat({}) {
             />
             <p>John Smith</p>
           </div>
-          <div className="flex items-center ">
+          <div className="flex items-center px-2">
             <ChatButton icon={faPhone} />
             <ChatButton icon={faVideo} />
             <ChatButton icon={faWindowMaximize} />
