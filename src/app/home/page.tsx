@@ -24,24 +24,24 @@ export default function Home() {
     setNewUser(null);
   }
 
-  const getUserData = async () => {
-    const q = query(collection(db, "users"), where("userID", "==", user.uid));
-
-    const querySnapshot = await getDocs(q);
-
-    querySnapshot.forEach((doc) => {
-      console.log(doc.id, " => ", doc.data().name);
-      setActualUser({
-        name: doc.data().name,
-        surname: doc.data().surname,
-        userID: doc.data().userID,
-      });
-    });
-  };
-
   useEffect(() => {
+    const getUserData = async () => {
+      const q = query(collection(db, "users"), where("userID", "==", user.uid));
+
+      const querySnapshot = await getDocs(q);
+
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data().name);
+        setActualUser({
+          name: doc.data().name,
+          surname: doc.data().surname,
+          userID: doc.data().userID,
+        });
+      });
+    };
+
     user && getUserData();
-  }, [user]);
+  }, [user, setActualUser]);
 
   return (
     <>
