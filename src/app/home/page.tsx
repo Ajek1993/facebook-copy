@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { useChatSetting } from "@/providers/ChatProvider";
+import { useUser } from "@/providers/UserProvider";
+import { useFirebase } from "@/providers/FirebaseProvider.tsx";
 import AddPost from "@/components/AddPost/AddPost";
 import Chat from "@/components/Chat/Chat";
 import Posts from "@/components/Posts/Posts";
@@ -12,6 +14,12 @@ import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   const { chatOpen } = useChatSetting();
+  const { user, newUser } = useUser();
+  const { addUser } = useFirebase();
+
+  if (user && newUser) {
+    addUser({ name: newUser.name, surname: newUser.surname, userID: user.uid });
+  }
   return (
     <>
       <PrivateRoute>

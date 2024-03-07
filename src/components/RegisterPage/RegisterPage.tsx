@@ -4,9 +4,11 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase.ts";
+import { useUser } from "@/providers/UserProvider.tsx";
 
 export default function RegisterPage() {
   const router = useRouter();
+  const { setNewUser } = useUser();
 
   const [values, setValues] = useState({
     name: "",
@@ -108,17 +110,12 @@ export default function RegisterPage() {
 
     const auth = getAuth(app);
 
-    const { email, password, confirmPassword } = values;
+    const { name, surname, email, password } = values;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        setValues({
-          name: "",
-          surname: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        });
+        // addUser({ name, surname });
+        setNewUser((prev: any) => ({ name, surname }));
         router.push("/home");
       })
       .catch((error) => {});

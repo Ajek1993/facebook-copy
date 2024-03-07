@@ -12,6 +12,20 @@ import {
 
 const FirebaseContext = createContext<any>({} as any);
 
+type UserData = {
+  name: string;
+  surname: string;
+  uid: string;
+};
+
+const addUser = async (user: UserData) => {
+  try {
+    await addDoc(collection(db, "users"), user);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const addPost = async (post: Post) => {
   try {
     const docRef = await addDoc(collection(db, "posts"), post);
@@ -43,18 +57,14 @@ export default function FirebasaeProvider({ children }: any) {
 
       // console.log(newPosts);
       setPosts((prev): any => {
-        return newPosts.sort((a, b) => +b.caption - +a.caption);
+        return newPosts.sort((a, b) => +b.createdAt - +a.createdAt);
       });
     };
     get();
   }, []);
 
-  // useEffect(() => {
-  //   setPosts((prev) => prev.sort((a, b) => +b.caption - +a.caption));
-  // }, [posts]);
-
   return (
-    <FirebaseContext.Provider value={{ addPost, posts, setPosts }}>
+    <FirebaseContext.Provider value={{ addPost, posts, setPosts, addUser }}>
       {children}
     </FirebaseContext.Provider>
   );

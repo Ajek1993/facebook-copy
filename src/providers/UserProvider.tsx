@@ -7,6 +7,7 @@ const UserContext = createContext<any>({} as any);
 
 export default function UserProvider({ children }: any) {
   const [user, setUser] = useState(false);
+  const [newUser, setNewUser] = useState(null);
 
   const auth = getAuth(app);
   onAuthStateChanged(auth, (user) => {
@@ -32,6 +33,8 @@ export default function UserProvider({ children }: any) {
     <UserContext.Provider
       value={{
         user,
+        newUser,
+        setNewUser,
         handleLogout,
       }}
     >
