@@ -8,6 +8,8 @@ import {
   updateDoc,
   doc,
   getDocs,
+  query,
+  where,
 } from "firebase/firestore";
 
 const FirebaseContext = createContext<any>({} as any);
@@ -55,7 +57,6 @@ export default function FirebasaeProvider({ children }: any) {
         newPosts.push(postInfo);
       });
 
-      // console.log(newPosts);
       setPosts((prev): any => {
         return newPosts.sort((a, b) => +b.createdAt - +a.createdAt);
       });

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useChatSetting } from "@/providers/ChatProvider";
 import { useUser } from "@/providers/UserProvider";
 import { useFirebase } from "@/providers/FirebaseProvider.tsx";
@@ -11,16 +11,36 @@ import LeftSideBar from "@/components/SideBars/LeftSideBar";
 import RightSideBar from "@/components/SideBars/RightSideBar";
 import PrivateRoute from "@/components/PrivateRoute";
 import Navbar from "@/components/Navbar/Navbar";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "../../../firebase";
 
 export default function Home() {
   const { chatOpen } = useChatSetting();
-  const { user, setNewUser, newUser } = useUser();
+  const { user, setNewUser, newUser, setActualUser } = useUser();
   const { addUser } = useFirebase();
 
   if (user && newUser) {
     addUser({ name: newUser.name, surname: newUser.surname, userID: user.uid });
     setNewUser(null);
   }
+
+  const getUserData = async () => {
+    const q = query(collection(db, "users"), where("userID", "==", user.uid));
+
+    const querySnapshot = await getDocs(q);
+
+    querySnapshot.forEach((doc) => {
+      console.log(doc.id, " => ", doc.data().name);
+      setActualUser({
+        name: doc.data().name,
+        surname: doc.data().surname,
+        userID: doc.data().userID,
+      });
+    });
+  };
+
+  user && getUserData();
+
   return (
     <>
       <PrivateRoute>
