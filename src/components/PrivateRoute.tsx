@@ -6,7 +6,7 @@ export default function PrivateRoute({ children }: any) {
   const { user } = useUser();
   const router = useRouter();
 
-  if (!user) {
+  if (user === null) {
     router.push("/login");
     return;
   }
