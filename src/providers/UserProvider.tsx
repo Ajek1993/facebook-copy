@@ -2,13 +2,11 @@
 import React, { createContext, useContext, useState } from "react";
 import { app } from "../../firebase.ts";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { useRouter } from "next/navigation";
 
 const UserContext = createContext<any>({} as any);
 
 export default function UserProvider({ children }: any) {
   const [user, setUser] = useState(false);
-  const router = useRouter();
 
   console.log(user);
 
@@ -18,7 +16,6 @@ export default function UserProvider({ children }: any) {
       setUser((prev): any => user);
     } else {
       setUser((prev): any => null);
-      router.push("/login");
     }
   });
 
