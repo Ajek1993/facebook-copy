@@ -126,7 +126,7 @@ export default function RegisterPage() {
   return (
     <div className="registerBox flex flex-col items-center justify-center">
       <div className="flex flex-col items-center">
-        <h1 className="text-3xl mb-6">Register</h1>
+        <h1 className="text-3xl mb-6">Sign up</h1>
         <form className="bg-secondary_darkGrey w-[85%] md:w-[390px] m-auto px-16 py-12 text-white rounded-lg">
           <div className="flex flex-col">
             <label className=" mb-2 py-1" htmlFor="name">
@@ -184,7 +184,7 @@ export default function RegisterPage() {
           </div>
           <div className="flex flex-col mt-6">
             <label className="my-2 py-1" htmlFor="password">
-              Hasło
+              Password
             </label>
             <input
               className={`bg-transparent outline-none py-1 border-b ${
@@ -207,7 +207,7 @@ export default function RegisterPage() {
           </div>
           <div className="flex flex-col mt-6">
             <label className=" my-2 py-1" htmlFor="confirmPassword">
-              Powtórz hasło
+              Confirm password
             </label>
             <input
               className={`bg-transparent outline-none py-1 border-b ${
@@ -225,12 +225,12 @@ export default function RegisterPage() {
           </div>
         </form>
         <nav className="w-[85%] md:w-[505px] m-auto flex items-center justify-between gap-4 text-lg text-white mt-9 font-light">
-          <Link href="/login">Zaloguj się</Link>
+          <Link href="/login">Sign in</Link>
           <button
             className="border-solid border border-white py-2 px-4 hover:bg-secondary_darkGrey"
             onClick={handleRegister}
           >
-            Załóż konto
+            Sign up
           </button>
         </nav>
       </div>
