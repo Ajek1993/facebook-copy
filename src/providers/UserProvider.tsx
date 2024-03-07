@@ -2,14 +2,17 @@
 import React, { createContext, useContext, useState } from "react";
 import { app } from "../../firebase.ts";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
-import { DocumentData } from "firebase/firestore";
 
 const UserContext = createContext<any>({} as any);
 
 export default function UserProvider({ children }: any) {
   const [user, setUser] = useState(false);
   const [newUser, setNewUser] = useState(null);
-  const [actualUser, setActualUser] = useState(null);
+  const [actualUser, setActualUser] = useState({
+    name: "",
+    surname: "",
+    userI: "",
+  });
 
   const auth = getAuth(app);
   onAuthStateChanged(auth, (user) => {
@@ -38,6 +41,7 @@ export default function UserProvider({ children }: any) {
         newUser,
         setNewUser,
         handleLogout,
+        actualUser,
         setActualUser,
       }}
     >

@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import Image from "next/image";
 import GreySeparator from "../common/GreySeparator";
 import {
@@ -9,17 +9,19 @@ import {
 import { persons } from "@/data/persons.ts";
 import AddPostIcon from "./AddPostIcon";
 import { useFirebase } from "@/providers/FirebaseProvider";
+import { useUser } from "@/providers/UserProvider";
 
 export default function AddPost() {
   const { picture, name } = persons[0];
   const { addPost, setPosts } = useFirebase();
+  const { actualUser } = useUser();
 
   const [post, setPost] = useState({
     _id: "",
     user: {
-      _id: 1,
-      name: "John",
-      lastname: "Smith",
+      _id: "",
+      name: "",
+      lastname: "",
       picture: "https://picsum.photos/50/50",
       short: "https://picsum.photos/140/240",
     },
@@ -32,16 +34,30 @@ export default function AddPost() {
     updatedAt: new Date(),
   });
 
+  useEffect(() => {
+    // This effect will be triggered whenever actualUser.userID changes
+    if (actualUser.userID) {
+      setPost((prev) => ({
+        ...prev,
+        user: {
+          ...prev.user,
+          _id: actualUser.userID,
+          name: actualUser.name,
+          lastname: actualUser.surname,
+        },
+      }));
+    }
+  }, [actualUser.userID, actualUser.name, actualUser.surname]);
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    addPost(post);
-    setPosts((prev: Post[]) => [post, ...prev]);
+
     setPost({
       _id: "",
       user: {
-        _id: 1,
-        name: "John",
-        lastname: "Smith",
+        _id: actualUser.userID,
+        name: actualUser.name,
+        lastname: actualUser.surname,
         picture: "https://picsum.photos/50/50",
         short: "https://picsum.photos/140/240",
       },
@@ -53,6 +69,8 @@ export default function AddPost() {
       createdAt: new Date(),
       updatedAt: new Date(),
     });
+    addPost(post);
+    setPosts((prev: Post[]) => [post, ...prev]);
   };
 
   const handleChange = ({

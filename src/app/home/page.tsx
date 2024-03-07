@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useChatSetting } from "@/providers/ChatProvider";
 import { useUser } from "@/providers/UserProvider";
 import { useFirebase } from "@/providers/FirebaseProvider.tsx";
@@ -39,7 +39,9 @@ export default function Home() {
     });
   };
 
-  user && getUserData();
+  useEffect(() => {
+    user && getUserData();
+  }, [user]);
 
   return (
     <>
