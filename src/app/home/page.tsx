@@ -8,12 +8,14 @@ import Shorts from "@/components/Shorts/Shorts";
 import LeftSideBar from "@/components/SideBars/LeftSideBar";
 import RightSideBar from "@/components/SideBars/RightSideBar";
 import PrivateRoute from "@/components/PrivateRoute";
+import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   const { chatOpen } = useChatSetting();
   return (
     <>
       <PrivateRoute>
+        <Navbar />
         <main className="flex justify-center relative mx-auto">
           <LeftSideBar />
           <div className="w-[300px] hidden xl:block"></div>

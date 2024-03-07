@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Kanit } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar/Navbar";
 import ChatProvider from "@/providers/ChatProvider";
 import FirebaseProvider from "@/providers/FirebaseProvider";
 import UserProvider from "@/providers/UserProvider";
@@ -23,10 +22,7 @@ export default function RootLayout({
       <body className={kanit.className}>
         <UserProvider>
           <FirebaseProvider>
-            <ChatProvider>
-              <Navbar />
-              {children}
-            </ChatProvider>
+            <ChatProvider>{children}</ChatProvider>
           </FirebaseProvider>
         </UserProvider>
       </body>

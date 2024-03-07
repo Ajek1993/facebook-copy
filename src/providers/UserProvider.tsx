@@ -15,7 +15,7 @@ export default function UserProvider({ children }: any) {
     if (user) {
       setUser((prev): any => user);
     } else {
-      setUser((prev): any => null);
+      // setUser((prev): any => null);
     }
   });
 
