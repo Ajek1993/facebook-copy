@@ -8,8 +8,6 @@ const UserContext = createContext<any>({} as any);
 export default function UserProvider({ children }: any) {
   const [user, setUser] = useState(false);
 
-  console.log(user);
-
   const auth = getAuth(app);
   onAuthStateChanged(auth, (user) => {
     if (user) {

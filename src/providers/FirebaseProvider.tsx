@@ -41,7 +41,7 @@ export default function FirebasaeProvider({ children }: any) {
         newPosts.push(postInfo);
       });
 
-      console.log(newPosts);
+      // console.log(newPosts);
       setPosts((prev): any => {
         return newPosts.sort((a, b) => +b.caption - +a.caption);
       });
