@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { db, app } from "../../firebase";
+import { db } from "../../firebase";
 import {
   collection,
   addDoc,
@@ -15,7 +15,7 @@ const FirebaseContext = createContext<any>({} as any);
 type UserData = {
   name: string;
   surname: string;
-  uid: string;
+  userID: string;
 };
 
 const addUser = async (user: UserData) => {

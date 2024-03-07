@@ -14,11 +14,12 @@ import Navbar from "@/components/Navbar/Navbar";
 
 export default function Home() {
   const { chatOpen } = useChatSetting();
-  const { user, newUser } = useUser();
+  const { user, setNewUser, newUser } = useUser();
   const { addUser } = useFirebase();
 
   if (user && newUser) {
     addUser({ name: newUser.name, surname: newUser.surname, userID: user.uid });
+    setNewUser(null);
   }
   return (
     <>

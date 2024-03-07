@@ -114,8 +114,7 @@ export default function RegisterPage() {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        // addUser({ name, surname });
-        setNewUser((prev: any) => ({ name, surname }));
+        setNewUser({ name, surname });
         router.push("/home");
       })
       .catch((error) => {});
