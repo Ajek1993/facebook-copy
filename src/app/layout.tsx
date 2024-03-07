@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import ChatProvider from "@/providers/ChatProvider";
 import FirebaseProvider from "@/providers/FirebaseProvider";
+import UserProvider from "@/providers/UserProvider";
 
 const kanit = Kanit({ weight: "400", subsets: ["latin"] });
 
@@ -20,12 +21,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={kanit.className}>
-        <FirebaseProvider>
-          <ChatProvider>
-            <Navbar />
-            {children}
-          </ChatProvider>
-        </FirebaseProvider>
+        <UserProvider>
+          <FirebaseProvider>
+            <ChatProvider>
+              <Navbar />
+              {children}
+            </ChatProvider>
+          </FirebaseProvider>
+        </UserProvider>
       </body>
     </html>
   );

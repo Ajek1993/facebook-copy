@@ -1,3 +1,5 @@
+import PrivateRoute from "@/components/PrivateRoute";
+
 export default function page() {
-  return <div>In progress: games</div>;
+  return <PrivateRoute><div>In progress: games</div></PrivateRoute>
 }
