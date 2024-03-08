@@ -10,6 +10,7 @@ import {
   getDocs,
   query,
   where,
+  deleteDoc,
 } from "firebase/firestore";
 
 const FirebaseContext = createContext<any>({} as any);
@@ -42,6 +43,14 @@ const addPost = async (post: Post) => {
   }
 };
 
+const deletePost = async (postID: string) => {
+  try {
+    await deleteDoc(doc(db, "posts", postID));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 export default function FirebasaeProvider({ children }: any) {
   const [posts, setPosts] = useState(null);
 
@@ -65,7 +74,9 @@ export default function FirebasaeProvider({ children }: any) {
   }, []);
 
   return (
-    <FirebaseContext.Provider value={{ addPost, posts, setPosts, addUser }}>
+    <FirebaseContext.Provider
+      value={{ addPost, deletePost, posts, setPosts, addUser }}
+    >
       {children}
     </FirebaseContext.Provider>
   );

@@ -5,6 +5,7 @@ import { CircularProgress } from "@nextui-org/react";
 
 export default function Posts() {
   const { posts } = useFirebase();
+  console.log(posts);
 
   return (
     <>
