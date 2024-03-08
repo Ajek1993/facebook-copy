@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -41,6 +41,7 @@ const CIRCULAR_BUTTONS: NavButton[] = [
 export default function Navbar() {
   const pathname = usePathname();
   const { handleLogout } = useUser();
+  const [listOpen, setListOpen] = useState(false);
 
   return (
     <>
@@ -90,7 +91,6 @@ export default function Navbar() {
             </div>
           </Link>
         </div>
-        <p onClick={handleLogout}>wyloguj</p>
 
         <nav className="mainNav hidden xl:flex grow justify-center">
           {NAV_BUTTONS.map((button, id) => (
@@ -98,10 +98,28 @@ export default function Navbar() {
           ))}
         </nav>
         <div>
-          <ul className="sideNav flex gap-2 mr-2">
+          <ul className="sideNav flex gap-2 mr-2 relative">
             {CIRCULAR_BUTTONS.map((button, id) => (
-              <CircularButton key={id} font={button.font} />
+              <CircularButton
+                key={id}
+                font={button.font}
+                path={button.path}
+                setListOpen={setListOpen}
+              />
             ))}
+            {listOpen && (
+              <ul className="absolute -bottom-[104px] -right-[6px] bg-secondary_darkGrey flex flex-col">
+                <li className="cursor-pointer hover:bg-darkGrey px-6 py-3">
+                  Profile
+                </li>
+                <li
+                  className="cursor-pointer hover:bg-darkGrey px-6 py-3"
+                  onClick={handleLogout}
+                >
+                  Sign out
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
       </header>
