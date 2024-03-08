@@ -8,7 +8,12 @@ export default function Posts() {
 
   return (
     <>
-      {!posts && <CircularProgress size="lg" aria-label="Loading..." />}
+      {!posts && (
+        <div className="flex items-center justify-center my-40">
+          <CircularProgress size="lg" aria-label="Loading..." />
+        </div>
+      )}
+
       {posts &&
         posts.map((post: Post, id: number) => <Post post={post} key={id} />)}
     </>

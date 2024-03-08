@@ -10,6 +10,7 @@ import { persons } from "@/data/persons.ts";
 import AddPostIcon from "./AddPostIcon";
 import { useFirebase } from "@/providers/FirebaseProvider";
 import { useUser } from "@/providers/UserProvider";
+import { CircularProgress } from "@nextui-org/react";
 
 export default function AddPost() {
   const { picture, name } = persons[0];
@@ -35,7 +36,6 @@ export default function AddPost() {
   });
 
   useEffect(() => {
-    // This effect will be triggered whenever actualUser.userID changes
     if (actualUser.userID) {
       setPost((prev) => ({
         ...prev,
@@ -83,41 +83,54 @@ export default function AddPost() {
   };
 
   return (
-    <article className="flex flex-col gap-2 px-4 py-3 my-2 bg-secondary_darkGrey rounded-xl">
-      <div className="flex justify-between items-center gap-2">
-        <div className="flex items-center">
-          <Image
-            src={picture}
-            width={40}
-            height={40}
-            alt="user mini photo"
-            className="rounded-full"
-          />
+    <>
+      {!actualUser.name && (
+        <div className="flex items-center justify-center my-10">
+          <CircularProgress size="lg" aria-label="Loading..." />
         </div>
-        <form className="w-full" onSubmit={handleSubmit}>
-          <input
-            className="rounded-full placeholder:text-lg text-lg bg-darkGrey px-4 py-1.5 w-full outline-none hover:opacity-85 cursor-pointer"
-            placeholder={`What are you thinking about, ${actualUser.name}?`}
-            type="text"
-            name="caption"
-            value={post.caption}
-            onChange={handleChange}
-            autoComplete="off"
-          />
-        </form>
-      </div>
-      <GreySeparator />
-      <ul className="flex justify-between items-center text-lightGrey">
-        <AddPostIcon icon={faVideo} text={"Broadcast"} color={"red"} />
-        <span className="hidden md:flex grow">
-          <AddPostIcon icon={faImage} text={"Picture/movie"} color={"green"} />
-        </span>
-        <AddPostIcon
-          icon={faFaceLaugh}
-          text={"Mood/Activity"}
-          color={"yellow"}
-        />
-      </ul>
-    </article>
+      )}
+      {actualUser.name && (
+        <article className="flex flex-col gap-2 px-4 py-3 my-2 bg-secondary_darkGrey rounded-xl">
+          <div className="flex justify-between items-center gap-2">
+            <div className="flex items-center">
+              <Image
+                src={picture}
+                width={40}
+                height={40}
+                alt="user mini photo"
+                className="rounded-full"
+              />
+            </div>
+            <form className="w-full" onSubmit={handleSubmit}>
+              <input
+                className="rounded-full placeholder:text-lg text-lg bg-darkGrey px-4 py-1.5 w-full outline-none hover:opacity-85 cursor-pointer"
+                placeholder={`What are you thinking about, ${actualUser.name}?`}
+                type="text"
+                name="caption"
+                value={post.caption}
+                onChange={handleChange}
+                autoComplete="off"
+              />
+            </form>
+          </div>
+          <GreySeparator />
+          <ul className="flex justify-between items-center text-lightGrey">
+            <AddPostIcon icon={faVideo} text={"Broadcast"} color={"red"} />
+            <span className="hidden md:flex grow">
+              <AddPostIcon
+                icon={faImage}
+                text={"Picture/movie"}
+                color={"green"}
+              />
+            </span>
+            <AddPostIcon
+              icon={faFaceLaugh}
+              text={"Mood/Activity"}
+              color={"yellow"}
+            />
+          </ul>
+        </article>
+      )}
+    </>
   );
 }
