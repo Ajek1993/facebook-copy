@@ -11,7 +11,7 @@ export default function UserProvider({ children }: any) {
   const [actualUser, setActualUser] = useState({
     name: "",
     surname: "",
-    userI: "",
+    userID: "",
   });
 
   const auth = getAuth(app);

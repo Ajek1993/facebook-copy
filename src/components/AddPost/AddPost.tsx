@@ -97,7 +97,7 @@ export default function AddPost() {
         <form className="w-full" onSubmit={handleSubmit}>
           <input
             className="rounded-full placeholder:text-lg text-lg bg-darkGrey px-4 py-1.5 w-full outline-none hover:opacity-85 cursor-pointer"
-            placeholder={`What are you thinking about, ${name}?`}
+            placeholder={`What are you thinking about, ${actualUser.name}?`}
             type="text"
             name="caption"
             value={post.caption}
