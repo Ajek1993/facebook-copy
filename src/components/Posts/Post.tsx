@@ -12,17 +12,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import PostButton from "./PostButton";
 import { useUser } from "@/providers/UserProvider";
-import { useFirebase } from "@/providers/FirebaseProvider";
+import PostDeleteModal from "./PostDeleteModal";
 
 export default function Post({ post }: { post: Post }) {
   const { name, lastname, picture, _id } = post.user;
   const { _id: postID } = post;
   const { actualUser } = useUser();
-  const { deletePost } = useFirebase();
 
   const isUserPost = _id === actualUser.userID ? true : false;
   const [deletedPost, setDeletedPost] = useState(false);
 
+  const [listOpen, setListOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(true);
   const [likes, setLikes] = useState(post.likes);
   const [isLike, setIsLike] = useState(false);
@@ -51,26 +51,33 @@ export default function Post({ post }: { post: Post }) {
                 </h2>
               </div>
             </div>
-            <div className="flex gap-1">
-              <button className="h-[40px] w-[40px] text-lightGrey hover:bg-darkGrey flex justify-center items-center cursor-pointer rounded-full">
+            <div className="flex gap-1 relative">
+              <button
+                className="h-[40px] w-[40px] text-lightGrey hover:bg-darkGrey flex justify-center items-center cursor-pointer rounded-full"
+                onClick={() => setListOpen((prev: boolean) => !prev)}
+              >
                 <FontAwesomeIcon icon={faEllipsis} className="h-1/2" />
               </button>
-              {isUserPost && (
-                <p
-                  onClick={() => {
-                    deletePost(postID);
-                    setDeletedPost(true);
-                  }}
-                >
-                  delete
-                </p>
-              )}
+
               <button
                 className="h-[40px] w-[40px] text-lightGrey hover:bg-darkGrey flex justify-center items-center cursor-pointer rounded-full"
                 onClick={() => setPostOpen((prev) => !prev)}
               >
                 <FontAwesomeIcon icon={faXmark} className="h-1/2" />
               </button>
+
+              {listOpen && isUserPost && (
+                <ul className="absolute -bottom-[100px] right-[34px] bg-secondary_darkGrey flex flex-col w-[120px]">
+                  <li className="cursor-pointer hover:bg-darkGrey px-4 py-3">
+                    Edytuj post
+                  </li>
+                  <PostDeleteModal
+                    setListOpen={setListOpen}
+                    setDeletedPost={setDeletedPost}
+                    postID={postID}
+                  />
+                </ul>
+              )}
             </div>
           </div>
           {postOpen && (
