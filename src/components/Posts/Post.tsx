@@ -27,7 +27,7 @@ export default function Post({ post }: { post: Post }) {
   const [postOpen, setPostOpen] = useState(true);
 
   const { posts } = useFirebase();
-  const [likes, setLikes] = useState(post.likes);
+  const [likes, setLikes] = useState(0);
   const [isLike, setIsLike] = useState(false);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ export default function Post({ post }: { post: Post }) {
     } else {
       setIsLike(false);
     }
+    setLikes(post.likes);
   }, [posts, actualUser.userID, postID]);
 
   return (
