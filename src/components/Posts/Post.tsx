@@ -27,13 +27,6 @@ export default function Post({ post }: { post: Post }) {
   const [postOpen, setPostOpen] = useState(true);
 
   const { posts } = useFirebase();
-  console.log(
-    posts.filter(
-      (post: Post) =>
-        post.whoLikes.includes(actualUser.userID) && postID === post._id
-    )
-  );
-
   const [likes, setLikes] = useState(post.likes);
   const [isLike, setIsLike] = useState(false);
 
@@ -116,13 +109,11 @@ export default function Post({ post }: { post: Post }) {
 
               <div className="p-3 flex justify-between items-center ">
                 <div>
-                  {isLike && post.whoLikes.length === 1 && (
-                    <span>You likes</span>
+                  {isLike && likes === 1 && <span>You likes</span>}
+                  {isLike && likes > 1 && (
+                    <span>You and {likes - 1} other people likes</span>
                   )}
-                  {isLike && post.whoLikes.length > 1 && (
-                    <span>You and {post.whoLikes.length} other people</span>
-                  )}
-                  {!isLike && <span>{post.whoLikes.length} likes</span>}
+                  {!isLike && <span>{likes} likes</span>}
                 </div>
                 <div className="flex gap-3">
                   <p>{post.comments} comments</p>

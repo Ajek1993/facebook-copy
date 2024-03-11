@@ -23,14 +23,15 @@ export default function PostButton({
 }: AppProps) {
   const buttonColor = text === "Like" && isLike ? "#025af2" : "inherit";
 
-  const { addLike } = useFirebase();
+  const { addLike, deleteLike } = useFirebase();
   const { actualUser } = useUser();
 
   const handleLikeClick = () => {
-    addLike(postID, actualUser.userID);
-    // setLikes && !isLike && setLikes((prev: number) => prev + 1);
-    // setLikes && isLike && setLikes((prev: number) => prev - 1);
-    // setIsLike && setIsLike((prev: boolean) => !prev);
+    !isLike && addLike(postID, actualUser.userID);
+    isLike && deleteLike(postID, actualUser.userID);
+    setLikes && !isLike && setLikes((prev: number) => prev + 1);
+    setLikes && isLike && setLikes((prev: number) => prev - 1);
+    setIsLike && setIsLike((prev: boolean) => !prev);
   };
 
   return (
