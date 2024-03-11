@@ -42,7 +42,7 @@ export default function Post({ post }: { post: Post }) {
       setIsLike(false);
     }
     setLikes(post.likes);
-  }, [posts, actualUser.userID, postID]);
+  }, [posts, actualUser.userID, postID, post.likes]);
 
   return (
     <>
