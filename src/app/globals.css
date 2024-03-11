@@ -9,6 +9,7 @@
 }
 
 body {
+  min-height: 101vh;
   color: rgb(var(--foreground-rgb));
   background: var(--background-rgb);
 }
@@ -84,8 +85,10 @@ aside::-webkit-scrollbar-thumb:hover {
   content: "Account";
 }
 
+.loginBox,
+.registerBox,
 aside {
-  height: calc(100% - 60px);
+  height: calc(100vh - 60px);
 }
 
 @layer utilities {

@@ -1,6 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconDefinition } from "@fortawesome/fontawesome-common-types";
+import { useFirebase } from "@/providers/FirebaseProvider";
+import { useUser } from "@/providers/UserProvider";
 
 type AppProps = {
   text: string;
@@ -8,6 +10,7 @@ type AppProps = {
   setLikes?: Function;
   isLike?: boolean;
   setIsLike?: Function;
+  postID?: string | number;
 };
 
 export default function PostButton({
@@ -16,10 +19,16 @@ export default function PostButton({
   setLikes,
   isLike,
   setIsLike,
+  postID,
 }: AppProps) {
   const buttonColor = text === "Like" && isLike ? "#025af2" : "inherit";
 
+  const { addLike, deleteLike } = useFirebase();
+  const { actualUser } = useUser();
+
   const handleLikeClick = () => {
+    !isLike && addLike(postID, actualUser.userID);
+    isLike && deleteLike(postID, actualUser.userID);
     setLikes && !isLike && setLikes((prev: number) => prev + 1);
     setLikes && isLike && setLikes((prev: number) => prev - 1);
     setIsLike && setIsLike((prev: boolean) => !prev);

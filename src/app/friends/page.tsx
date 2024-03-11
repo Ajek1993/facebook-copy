@@ -1,3 +1,11 @@
+import Navbar from "@/components/Navbar/Navbar";
+import PrivateRoute from "@/components/PrivateRoute";
+
 export default function page() {
-  return <div>In progress: friends</div>;
+  return (
+    <PrivateRoute>
+      <Navbar />
+      <div>In progress: friends</div>
+    </PrivateRoute>
+  );
 }

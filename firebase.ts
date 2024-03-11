@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "facebook-copy-5f968.firebaseapp.com",
   projectId: "facebook-copy-5f968",
   storageBucket: "facebook-copy-5f968.appspot.com",

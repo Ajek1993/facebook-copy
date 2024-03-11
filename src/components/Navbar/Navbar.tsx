@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,9 +21,10 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import CircularButton from "../common/buttons/CircularButton";
 import NavigationButton from "../common/buttons/NavigationButton";
+import { useUser } from "@/providers/UserProvider";
 
 const NAV_BUTTONS: NavButton[] = [
-  { path: "/", font: faHouse },
+  { path: "/home", font: faHouse },
   { path: "/movies", font: faFilm },
   { path: "/marketplace", font: faStore },
   { path: "/groups", font: faUsers },
@@ -39,13 +40,15 @@ const CIRCULAR_BUTTONS: NavButton[] = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const { handleLogout } = useUser();
+  const [listOpen, setListOpen] = useState(false);
 
   return (
     <>
       <header className="h-[60px] flex items-center justify-between p-2 bg-secondary_darkGrey sticky top-0 z-20 border-b-[1px] border-solid border-lightGrey border-opacity-40">
         <div className="h-full flex items-center justify-center gap-1">
           <div>
-            <Link href={"/"}>
+            <Link href={"/home"}>
               <div className="h-[50px] flex items-center">
                 <FontAwesomeIcon
                   icon={faFacebook}
@@ -95,10 +98,28 @@ export default function Navbar() {
           ))}
         </nav>
         <div>
-          <ul className="sideNav flex gap-2 mr-2">
+          <ul className="sideNav flex gap-2 mr-2 relative">
             {CIRCULAR_BUTTONS.map((button, id) => (
-              <CircularButton key={id} font={button.font} />
+              <CircularButton
+                key={id}
+                font={button.font}
+                path={button.path}
+                setListOpen={setListOpen}
+              />
             ))}
+            {listOpen && (
+              <ul className="absolute -bottom-[104px] -right-[6px] bg-secondary_darkGrey flex flex-col">
+                <li className="cursor-pointer hover:bg-darkGrey px-6 py-3">
+                  Profile
+                </li>
+                <li
+                  className="cursor-pointer hover:bg-darkGrey px-6 py-3"
+                  onClick={handleLogout}
+                >
+                  Sign out
+                </li>
+              </ul>
+            )}
           </ul>
         </div>
       </header>

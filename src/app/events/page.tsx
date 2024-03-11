@@ -1,3 +1,11 @@
+import Navbar from "@/components/Navbar/Navbar";
+import PrivateRoute from "@/components/PrivateRoute";
+
 export default function page() {
-  return <div>In progress: events</div>;
+  return (
+    <PrivateRoute>
+      <Navbar />
+      <div>In progress: events</div>
+    </PrivateRoute>
+  );
 }
