@@ -83,7 +83,7 @@ export default function Post({ post }: { post: Post }) {
               </button>
 
               {listOpen && isUserPost && (
-                <ul className="absolute -bottom-[100px] right-[34px] bg-secondary_darkGrey flex flex-col w-[120px]">
+                <ul className="absolute -bottom-[100px] right-[34px] bg-secondary_darkGrey flex flex-col w-[120px] z-10">
                   <li className="cursor-pointer hover:bg-darkGrey px-4 py-3">
                     Edytuj post
                   </li>

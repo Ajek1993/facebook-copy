@@ -6,14 +6,12 @@ import {
   faImage,
   faVideo,
 } from "@fortawesome/free-solid-svg-icons";
-import { persons } from "@/data/persons.ts";
 import AddPostIcon from "./AddPostIcon";
 import { useFirebase } from "@/providers/FirebaseProvider";
 import { useUser } from "@/providers/UserProvider";
 import { CircularProgress } from "@nextui-org/react";
 
 export default function AddPost() {
-  const { picture, name } = persons[0];
   const { addPost, setPosts } = useFirebase();
   const { actualUser } = useUser();
 
@@ -53,7 +51,8 @@ export default function AddPost() {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    setPost({
+    setPost((prevPost) => ({
+      ...prevPost,
       _id: "",
       user: {
         _id: actualUser.userID,
@@ -70,7 +69,7 @@ export default function AddPost() {
       shares: 0,
       createdAt: new Date(),
       updatedAt: new Date(),
-    });
+    }));
     addPost(post);
     setPosts((prev: Post[]) => [post, ...prev]);
   };
@@ -96,7 +95,7 @@ export default function AddPost() {
           <div className="flex justify-between items-center gap-2">
             <div className="flex items-center">
               <Image
-                src={picture}
+                src={post.user.picture}
                 width={40}
                 height={40}
                 alt="user mini photo"
