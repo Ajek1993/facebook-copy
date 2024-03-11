@@ -11,6 +11,7 @@ import {
   query,
   where,
   deleteDoc,
+  arrayUnion,
 } from "firebase/firestore";
 
 const FirebaseContext = createContext<any>({} as any);
@@ -38,6 +39,15 @@ const addPost = async (post: Post) => {
     });
 
     console.log("Document written with ID: ", docRef.id);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const addLike = async (postID: string, userID: string) => {
+  try {
+    const postRef = doc(db, "posts", postID);
+    await updateDoc(postRef, { whoLikes: arrayUnion(userID) });
   } catch (err) {
     console.log(err);
   }
@@ -75,7 +85,7 @@ export default function FirebasaeProvider({ children }: any) {
 
   return (
     <FirebaseContext.Provider
-      value={{ addPost, deletePost, posts, setPosts, addUser }}
+      value={{ addPost, deletePost, posts, setPosts, addUser, addLike }}
     >
       {children}
     </FirebaseContext.Provider>

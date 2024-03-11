@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GreySeparator from "../common/GreySeparator";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,6 +13,7 @@ import {
 import PostButton from "./PostButton";
 import { useUser } from "@/providers/UserProvider";
 import PostDeleteModal from "./PostDeleteModal";
+import { useFirebase } from "@/providers/FirebaseProvider";
 
 export default function Post({ post }: { post: Post }) {
   const { name, lastname, picture, _id } = post.user;
@@ -24,8 +25,30 @@ export default function Post({ post }: { post: Post }) {
 
   const [listOpen, setListOpen] = useState(false);
   const [postOpen, setPostOpen] = useState(true);
+
+  const { posts } = useFirebase();
+  console.log(
+    posts.filter(
+      (post: Post) =>
+        post.whoLikes.includes(actualUser.userID) && postID === post._id
+    )
+  );
+
   const [likes, setLikes] = useState(post.likes);
   const [isLike, setIsLike] = useState(false);
+
+  useEffect(() => {
+    if (
+      posts.filter(
+        (post: Post) =>
+          post.whoLikes.includes(actualUser.userID) && postID === post._id
+      ).length > 0
+    ) {
+      setIsLike(true);
+    } else {
+      setIsLike(false);
+    }
+  }, [posts, actualUser.userID, postID]);
 
   return (
     <>
@@ -93,8 +116,13 @@ export default function Post({ post }: { post: Post }) {
 
               <div className="p-3 flex justify-between items-center ">
                 <div>
-                  {isLike && <span>You and </span>}
-                  {likes} {isLike && <span>other</span>} people likes
+                  {isLike && post.whoLikes.length === 1 && (
+                    <span>You likes</span>
+                  )}
+                  {isLike && post.whoLikes.length > 1 && (
+                    <span>You and {post.whoLikes.length} other people</span>
+                  )}
+                  {!isLike && <span>{post.whoLikes.length} likes</span>}
                 </div>
                 <div className="flex gap-3">
                   <p>{post.comments} comments</p>
@@ -111,6 +139,7 @@ export default function Post({ post }: { post: Post }) {
                   setLikes={setLikes}
                   isLike={isLike}
                   setIsLike={setIsLike}
+                  postID={postID}
                 />
                 <PostButton text={"Comment"} icon={faComment} />
                 <PostButton text={"Share"} icon={faShare} />
