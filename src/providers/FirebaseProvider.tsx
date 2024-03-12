@@ -8,8 +8,6 @@ import {
   updateDoc,
   doc,
   getDocs,
-  query,
-  where,
   deleteDoc,
   arrayUnion,
   arrayRemove,
@@ -24,62 +22,9 @@ type UserData = {
   userID: string;
 };
 
-const addUser = async (user: UserData) => {
-  try {
-    await addDoc(collection(db, "users"), user);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const addPost = async (post: Post) => {
-  try {
-    const docRef = await addDoc(collection(db, "posts"), post);
-
-    await updateDoc(doc(db, "posts", docRef.id), {
-      _id: docRef.id,
-    });
-
-    console.log("Document written with ID: ", docRef.id);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const addLike = async (postID: string, userID: string) => {
-  try {
-    const postRef = doc(db, "posts", postID);
-    await updateDoc(postRef, {
-      likes: increment(1),
-      whoLikes: arrayUnion(userID),
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const deleteLike = async (postID: string, userID: string) => {
-  try {
-    const postRef = doc(db, "posts", postID);
-    await updateDoc(postRef, {
-      likes: increment(-1),
-      whoLikes: arrayRemove(userID),
-    });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const deletePost = async (postID: string) => {
-  try {
-    await deleteDoc(doc(db, "posts", postID));
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export default function FirebasaeProvider({ children }: any) {
   const [posts, setPosts] = useState(null);
+  const [newPostID, setNewPostID] = useState("");
 
   useEffect(() => {
     const get = async () => {
@@ -99,6 +44,60 @@ export default function FirebasaeProvider({ children }: any) {
     };
     get();
   }, []);
+
+  const addUser = async (user: UserData) => {
+    try {
+      await addDoc(collection(db, "users"), user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addPost = async (post: Post) => {
+    try {
+      const docRef = await addDoc(collection(db, "posts"), post);
+
+      await updateDoc(doc(db, "posts", docRef.id), {
+        _id: docRef.id,
+      });
+
+      setNewPostID(docRef.id);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const addLike = async (postID: string, userID: string) => {
+    try {
+      const postRef = doc(db, "posts", postID || newPostID);
+      await updateDoc(postRef, {
+        likes: increment(1),
+        whoLikes: arrayUnion(userID),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deleteLike = async (postID: string, userID: string) => {
+    try {
+      const postRef = doc(db, "posts", postID || newPostID);
+      await updateDoc(postRef, {
+        likes: increment(-1),
+        whoLikes: arrayRemove(userID),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const deletePost = async (postID: string) => {
+    try {
+      await deleteDoc(doc(db, "posts", postID || newPostID));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <FirebaseContext.Provider

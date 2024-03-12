@@ -31,7 +31,6 @@ export default function Home() {
       const querySnapshot = await getDocs(q);
 
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data().name);
         setActualUser({
           name: doc.data().name,
           surname: doc.data().surname,
