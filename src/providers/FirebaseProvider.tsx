@@ -18,8 +18,9 @@ const FirebaseContext = createContext<any>({} as any);
 
 type UserData = {
   name: string;
-  surname: string;
+  lastname: string;
   userID: string;
+  picture: string;
 };
 
 export default function FirebasaeProvider({ children }: any) {

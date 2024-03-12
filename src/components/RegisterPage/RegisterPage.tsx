@@ -6,6 +6,10 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase.ts";
 import { useUser } from "@/providers/UserProvider.tsx";
 
+function randomInteger(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export default function RegisterPage() {
   const router = useRouter();
   const { setNewUser } = useUser();
@@ -112,9 +116,14 @@ export default function RegisterPage() {
 
     const { name, lastname, email, password } = values;
 
+    const picture = `https://picsum.photos/${randomInteger(
+      50,
+      70
+    )}/${randomInteger(50, 70)}`;
+
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        setNewUser({ name, lastname });
+        setNewUser({ name, lastname, picture });
         router.push("/home");
       })
       .catch((error) => {});

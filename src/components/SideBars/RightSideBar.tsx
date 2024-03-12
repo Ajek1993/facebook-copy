@@ -12,10 +12,7 @@ import {
 import GreySeparator from "../common/GreySeparator";
 import { useChatSetting } from "@/providers/ChatProvider";
 import { useFirebase } from "@/providers/FirebaseProvider";
-
-function randomInteger(min: number, max: number): number {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+import { CircularProgress } from "@nextui-org/react";
 
 export default function RightSideBar() {
   const { setChatOpen } = useChatSetting();
@@ -61,6 +58,11 @@ export default function RightSideBar() {
           />
         </div>
       </div>
+      {!users && (
+        <div className="flex items-center justify-center my-10">
+          <CircularProgress size="lg" aria-label="Loading..." />
+        </div>
+      )}
       {users && (
         <ul>
           <li
@@ -83,10 +85,7 @@ export default function RightSideBar() {
                 className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
               >
                 <Image
-                  src={`https://picsum.photos/${randomInteger(
-                    50,
-                    70
-                  )}/${randomInteger(50, 70)}`}
+                  src={user.picture}
                   width={35}
                   height={35}
                   alt="userPhoto"

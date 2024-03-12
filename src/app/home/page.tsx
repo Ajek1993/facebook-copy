@@ -20,7 +20,12 @@ export default function Home() {
   const { addUser } = useFirebase();
 
   if (user && newUser) {
-    addUser({ name: newUser.name, surname: newUser.surname, userID: user.uid });
+    addUser({
+      name: newUser.name,
+      lastname: newUser.lastname,
+      userID: user.uid,
+      picture: newUser.picture,
+    });
     setNewUser(null);
   }
 
@@ -33,7 +38,7 @@ export default function Home() {
       querySnapshot.forEach((doc) => {
         setActualUser({
           name: doc.data().name,
-          surname: doc.data().surname,
+          lastname: doc.data().lastname,
           userID: doc.data().userID,
         });
       });
