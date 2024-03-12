@@ -24,12 +24,15 @@ type UserData = {
 
 export default function FirebasaeProvider({ children }: any) {
   const [posts, setPosts] = useState(null);
+  const [users, setUsers] = useState(null);
   const [newPostID, setNewPostID] = useState("");
 
   useEffect(() => {
     const get = async () => {
       const postsCollection = collection(db, "posts");
+      const usersCollection = collection(db, "users");
       const querySnapshotPosts = await getDocs(postsCollection);
+      const querySnapshotUsers = await getDocs(usersCollection);
 
       const newPosts: any[] = [];
       querySnapshotPosts.forEach((post) => {
@@ -37,6 +40,14 @@ export default function FirebasaeProvider({ children }: any) {
         postInfo["createdAt"] = postInfo["createdAt"].toDate();
         newPosts.push(postInfo);
       });
+
+      const newUsers: any[] = [];
+      querySnapshotUsers.forEach((user) => {
+        const userInfo = user.data();
+        newUsers.push(userInfo);
+      });
+
+      setUsers((prev): any => newUsers);
 
       setPosts((prev): any => {
         return newPosts.sort((a, b) => +b.createdAt - +a.createdAt);
@@ -109,6 +120,8 @@ export default function FirebasaeProvider({ children }: any) {
         addUser,
         addLike,
         deleteLike,
+        users,
+        setUsers,
       }}
     >
       {children}

@@ -9,15 +9,20 @@ import {
   faGift,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
 import { useChatSetting } from "@/providers/ChatProvider";
+import { useFirebase } from "@/providers/FirebaseProvider";
+
+function randomInteger(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 export default function RightSideBar() {
   const { setChatOpen } = useChatSetting();
+  const { users } = useFirebase();
 
-  const handleClick = (id: number): void => {
-    id === 0 && setChatOpen((prev: boolean) => !prev);
+  const handleClick = (): void => {
+    setChatOpen((prev: boolean) => !prev);
   };
 
   return (
@@ -56,26 +61,45 @@ export default function RightSideBar() {
           />
         </div>
       </div>
-      <ul>
-        {persons.map((person, id) => (
+      {users && (
+        <ul>
           <li
-            key={id}
             className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
-            onClick={() => handleClick(id)}
+            onClick={() => handleClick()}
           >
             <Image
-              src={person.picture}
+              src="https://picsum.photos/67/67"
               width={35}
               height={35}
               alt="userPhoto"
               className="rounded-full"
             />
-            <p>
-              {person.name} {person.lastname}
-            </p>
+            <p>John Smith</p>
           </li>
-        ))}
-      </ul>
+          {users.map((user: Person, id: number) => {
+            return (
+              <li
+                key={id}
+                className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
+              >
+                <Image
+                  src={`https://picsum.photos/${randomInteger(
+                    50,
+                    70
+                  )}/${randomInteger(50, 70)}`}
+                  width={35}
+                  height={35}
+                  alt="userPhoto"
+                  className="rounded-full h-[35px] w-[35px]"
+                />
+                <p>
+                  {user.name} {user.lastname}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      )}
       <GreySeparator />
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Group coversations"} />
