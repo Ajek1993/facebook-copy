@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  ChangeEvent,
+  FormEvent,
+} from "react";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import Image from "next/image";
 import GreySeparator from "../common/GreySeparator";
@@ -19,15 +25,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export default function ChatUser({}) {
   const { chatUserMinimize, chatUserData } = useChatSetting();
   const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const { name, lastname, picture } = chatUserData;
 
   const ref = useRef<HTMLDivElement>(null);
-
-  const { name, lastname, picture } = chatUserData;
 
   useEffect(() => {
     if (ref.current === null) return;
     ref.current.scrollTo(0, ref.current.scrollHeight);
   }, [messages]);
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setInput(event.target.value);
+  };
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    console.log("Wysłano");
+  };
 
   return (
     <div
@@ -109,11 +124,11 @@ export default function ChatUser({}) {
           </ScrollArea>
         )}
 
-        {/* {!chatMinimize && (
+        {!chatUserMinimize && (
           <form onSubmit={handleSubmit} className="flex justify-center">
             <input
               value={input}
-              onChange={handleInputChange}
+              onChange={handleChange}
               placeholder="Aa"
               className="px-4 pt-2 pb-1 rounded-full text-sm w-full m-2 bg-darkGrey outline-none"
             />
@@ -124,7 +139,7 @@ export default function ChatUser({}) {
               <FontAwesomeIcon icon={faCircleArrowRight} className="h-3/4" />
             </button>
           </form>
-        )} */}
+        )}
       </div>
     </div>
   );
