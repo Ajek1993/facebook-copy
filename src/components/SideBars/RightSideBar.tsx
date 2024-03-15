@@ -15,11 +15,21 @@ import { useFirebase } from "@/providers/FirebaseProvider";
 import { CircularProgress } from "@nextui-org/react";
 
 export default function RightSideBar() {
-  const { setChatOpen } = useChatSetting();
+  const { setChatAIOpen, setChatUserOpen, chatUserData, setChatUserData } =
+    useChatSetting();
   const { users } = useFirebase();
 
-  const handleClick = (): void => {
-    setChatOpen((prev: boolean) => !prev);
+  const handleClickAI = (): void => {
+    setChatAIOpen((prev: boolean) => !prev);
+  };
+
+  const handleClickUser = (
+    name: string,
+    lastname: string,
+    picture: string
+  ): void => {
+    setChatUserOpen((prev: boolean) => !prev);
+    setChatUserData({ name, lastname, picture });
   };
 
   return (
@@ -67,7 +77,7 @@ export default function RightSideBar() {
         <ul>
           <li
             className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
-            onClick={() => handleClick()}
+            onClick={() => handleClickAI()}
           >
             <Image
               src="https://picsum.photos/67/67"
@@ -83,6 +93,9 @@ export default function RightSideBar() {
               <li
                 key={id}
                 className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
+                onClick={() =>
+                  handleClickUser(user.name, user.lastname, user.picture)
+                }
               >
                 <Image
                   src={user.picture}

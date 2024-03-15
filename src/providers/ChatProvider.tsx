@@ -5,12 +5,30 @@ import React, { createContext, useContext, useState } from "react";
 const ChatContext = createContext<any>({} as any);
 
 export default function ChatProvider({ children }: any) {
-  const [chatOpen, setChatOpen] = useState(false);
-  const [chatMinimize, setChatMinimize] = useState(false);
+  const [chatAIOpen, setChatAIOpen] = useState(false);
+  const [chatUserOpen, setChatUserOpen] = useState(false);
+  const [chatUserData, setChatUserData] = useState({
+    name: "",
+    lastname: "",
+    picture: "",
+  });
+  const [chatAIMinimize, setChatAIMinimize] = useState(false);
+  const [chatUserMinimize, setChatUserMinimize] = useState(false);
 
   return (
     <ChatContext.Provider
-      value={{ chatOpen, setChatOpen, chatMinimize, setChatMinimize }}
+      value={{
+        chatAIOpen,
+        setChatAIOpen,
+        chatUserOpen,
+        setChatUserOpen,
+        chatUserData,
+        setChatUserData,
+        chatAIMinimize,
+        setChatAIMinimize,
+        chatUserMinimize,
+        setChatUserMinimize,
+      }}
     >
       {children}
     </ChatContext.Provider>

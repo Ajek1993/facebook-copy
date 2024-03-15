@@ -4,7 +4,8 @@ import { useChatSetting } from "@/providers/ChatProvider";
 import { useUser } from "@/providers/UserProvider";
 import { useFirebase } from "@/providers/FirebaseProvider.tsx";
 import AddPost from "@/components/AddPost/AddPost";
-import Chat from "@/components/Chat/Chat";
+import ChatAI from "@/components/Chat/ChatAI";
+import ChatUser from "@/components/Chat/ChatUser";
 import Posts from "@/components/Posts/Posts";
 import Shorts from "@/components/Shorts/Shorts";
 import LeftSideBar from "@/components/SideBars/LeftSideBar";
@@ -15,7 +16,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../firebase";
 
 export default function Home() {
-  const { chatOpen } = useChatSetting();
+  const { chatAIOpen, chatUserOpen } = useChatSetting();
   const { user, setNewUser, newUser, setActualUser } = useUser();
   const { addUser } = useFirebase();
 
@@ -61,7 +62,10 @@ export default function Home() {
           </section>
           <div className="w-[400px] hidden lg:block"></div>
           <RightSideBar />
-          <div className="fixed bottom-0 right-10">{chatOpen && <Chat />}</div>
+          <div className="fixed bottom-0 right-10 flex gap-2 items-end">
+            {chatAIOpen && <ChatAI />}
+            {chatUserOpen && <ChatUser />}
+          </div>
         </main>
       </PrivateRoute>
     </>

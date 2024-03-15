@@ -6,17 +6,33 @@ import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
 type AppProps = {
   icon: IconDefinition;
   name?: string;
+  role?: string;
 };
 
-export default function ChatButton({ icon, name }: AppProps) {
-  const { setChatOpen, setChatMinimize } = useChatSetting();
+export default function ChatButton({ icon, name, role }: AppProps) {
+  const {
+    setChatAIOpen,
+    setChatAIMinimize,
+    setChatUserOpen,
+    setChatUserMinimize,
+  } = useChatSetting();
 
   const handleClick = () => {
-    name === "windowMinimize/Maximize" &&
-      setChatMinimize((prev: boolean) => !prev);
-    if (name === "windowClose") {
-      setChatOpen((prev: boolean) => !prev);
-      setChatMinimize(false);
+    if (name === "windowMinimize/Maximize" && role === "ai") {
+      setChatAIMinimize((prev: boolean) => !prev);
+    }
+
+    if (name === "windowMinimize/Maximize" && role === "user") {
+      setChatUserMinimize((prev: boolean) => !prev);
+    }
+
+    if (name === "windowClose" && role === "ai") {
+      setChatAIOpen((prev: boolean) => !prev);
+      setChatAIMinimize(false);
+    }
+    if (name === "windowClose" && role === "user") {
+      setChatUserOpen((prev: boolean) => !prev);
+      setChatUserMinimize(false);
     }
   };
 
