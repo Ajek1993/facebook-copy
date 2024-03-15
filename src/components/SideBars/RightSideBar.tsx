@@ -2,7 +2,6 @@
 
 import React from "react";
 import Heading from "../Heading";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
@@ -10,28 +9,9 @@ import {
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
 import GreySeparator from "../common/GreySeparator";
-import { useChatSetting } from "@/providers/ChatProvider";
-import { useFirebase } from "@/providers/FirebaseProvider";
-import { CircularProgress } from "@nextui-org/react";
+import Messenger from "../Messenger/Messenger";
 
 export default function RightSideBar() {
-  const { setChatAIOpen, setChatUserOpen, chatUserData, setChatUserData } =
-    useChatSetting();
-  const { users } = useFirebase();
-
-  const handleClickAI = (): void => {
-    setChatAIOpen((prev: boolean) => !prev);
-  };
-
-  const handleClickUser = (
-    name: string,
-    lastname: string,
-    picture: string
-  ): void => {
-    setChatUserOpen((prev: boolean) => !prev);
-    setChatUserData({ name, lastname, picture });
-  };
-
   return (
     <aside className="w-[350px] min-w-[250px] hidden lg:block overflow-y-scroll fixed right-0">
       <div className="mt-4 flex justify-between items-center">
@@ -68,50 +48,7 @@ export default function RightSideBar() {
           />
         </div>
       </div>
-      {!users && (
-        <div className="flex items-center justify-center my-10">
-          <CircularProgress size="lg" aria-label="Loading..." />
-        </div>
-      )}
-      {users && (
-        <ul>
-          <li
-            className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
-            onClick={() => handleClickAI()}
-          >
-            <Image
-              src="https://picsum.photos/67/67"
-              width={35}
-              height={35}
-              alt="userPhoto"
-              className="rounded-full"
-            />
-            <p>John Smith</p>
-          </li>
-          {users.map((user: Person, id: number) => {
-            return (
-              <li
-                key={id}
-                className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
-                onClick={() =>
-                  handleClickUser(user.name, user.lastname, user.picture)
-                }
-              >
-                <Image
-                  src={user.picture}
-                  width={35}
-                  height={35}
-                  alt="userPhoto"
-                  className="rounded-full h-[35px] w-[35px]"
-                />
-                <p>
-                  {user.name} {user.lastname}
-                </p>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <Messenger />
       <GreySeparator />
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Group coversations"} />
