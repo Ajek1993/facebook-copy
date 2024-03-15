@@ -14,9 +14,10 @@ import PrivateRoute from "@/components/PrivateRoute";
 import Navbar from "@/components/Navbar/Navbar";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../../../firebase";
+import Messenger from "@/components/Messenger/Messenger";
 
 export default function Home() {
-  const { chatAIOpen, chatUserOpen } = useChatSetting();
+  const { chatAIOpen, chatUserOpen, messegerOpen } = useChatSetting();
   const { user, setNewUser, newUser, setActualUser } = useUser();
   const { addUser } = useFirebase();
 
@@ -56,13 +57,14 @@ export default function Home() {
           <LeftSideBar />
           <div className="w-[300px] hidden xl:block"></div>
           <section className="max-w-[800px] min-w-[350px] relative mt-2">
+            <div className="lg:hidden">{messegerOpen && <Messenger />}</div>
             <Shorts />
             <AddPost />
             <Posts />
           </section>
           <div className="w-[400px] hidden lg:block"></div>
           <RightSideBar />
-          <div className="fixed bottom-0 right-10 flex gap-2 items-end">
+          <div className="fixed bottom-0 right-0 md:right-10 flex gap-2 items-end">
             {chatAIOpen && <ChatAI />}
             {chatUserOpen && <ChatUser />}
           </div>

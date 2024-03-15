@@ -14,6 +14,7 @@ export default function ChatProvider({ children }: any) {
   });
   const [chatAIMinimize, setChatAIMinimize] = useState(false);
   const [chatUserMinimize, setChatUserMinimize] = useState(false);
+  const [messegerOpen, setMessengerOpen] = useState(false);
 
   return (
     <ChatContext.Provider
@@ -28,6 +29,8 @@ export default function ChatProvider({ children }: any) {
         setChatAIMinimize,
         chatUserMinimize,
         setChatUserMinimize,
+        messegerOpen,
+        setMessengerOpen,
       }}
     >
       {children}

@@ -7,12 +7,18 @@ import { useFirebase } from "@/providers/FirebaseProvider";
 import { CircularProgress } from "@nextui-org/react";
 
 export default function Messenger() {
-  const { setChatAIOpen, setChatUserOpen, chatUserData, setChatUserData } =
-    useChatSetting();
+  const {
+    setChatAIOpen,
+    setChatUserOpen,
+    setChatAIMinimize,
+    setChatUserMinimize,
+    setChatUserData,
+  } = useChatSetting();
   const { users } = useFirebase();
 
   const handleClickAI = (): void => {
     setChatAIOpen((prev: boolean) => !prev);
+    setChatAIMinimize(false);
   };
 
   const handleClickUser = (
@@ -21,11 +27,12 @@ export default function Messenger() {
     picture: string
   ): void => {
     setChatUserOpen((prev: boolean) => !prev);
+    setChatUserMinimize(false);
     setChatUserData({ name, lastname, picture });
   };
 
   return (
-    <>
+    <div>
       {!users && (
         <div className="flex items-center justify-center my-10">
           <CircularProgress size="lg" aria-label="Loading..." />
@@ -70,6 +77,6 @@ export default function Messenger() {
           })}
         </ul>
       )}
-    </>
+    </div>
   );
 }
