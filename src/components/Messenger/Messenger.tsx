@@ -13,11 +13,13 @@ export default function Messenger() {
     setChatAIMinimize,
     setChatUserMinimize,
     setChatUserData,
+    setMessengerOpen,
   } = useChatSetting();
   const { users } = useFirebase();
 
   const handleClickAI = (): void => {
     setChatAIOpen((prev: boolean) => !prev);
+    setMessengerOpen((prev: boolean) => !prev);
     setChatAIMinimize(false);
   };
 
@@ -27,6 +29,7 @@ export default function Messenger() {
     picture: string
   ): void => {
     setChatUserOpen((prev: boolean) => !prev);
+    setMessengerOpen((prev: boolean) => !prev);
     setChatUserMinimize(false);
     setChatUserData({ name, lastname, picture });
   };
