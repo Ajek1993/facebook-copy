@@ -21,7 +21,7 @@ export default function AddPost() {
       _id: "",
       name: "",
       lastname: "",
-      picture: "https://picsum.photos/50/50",
+      picture: actualUser.picture,
       short: "https://picsum.photos/140/240",
     },
     caption: "",
@@ -43,10 +43,16 @@ export default function AddPost() {
           _id: actualUser.userID,
           name: actualUser.name,
           lastname: actualUser.surname,
+          picture: actualUser.picture,
         },
       }));
     }
-  }, [actualUser.userID, actualUser.name, actualUser.surname]);
+  }, [
+    actualUser.userID,
+    actualUser.name,
+    actualUser.surname,
+    actualUser.picture,
+  ]);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -58,7 +64,7 @@ export default function AddPost() {
         _id: actualUser.userID,
         name: actualUser.name,
         lastname: actualUser.surname,
-        picture: "https://picsum.photos/50/50",
+        picture: actualUser.picture,
         short: "https://picsum.photos/140/240",
       },
       caption: "",
@@ -99,7 +105,7 @@ export default function AddPost() {
                 width={40}
                 height={40}
                 alt="user mini photo"
-                className="rounded-full"
+                className="rounded-full w-[43px] h-[40px]"
               />
             </div>
             <form className="w-full" onSubmit={handleSubmit}>

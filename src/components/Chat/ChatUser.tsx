@@ -52,7 +52,7 @@ export default function ChatUser({}) {
     >
       <div className="mt-3 w-full max-w-lg rounded-xl bg-secondary_darkGrey">
         <div className="flex justify-between -mb-1">
-          <div className="flex items-center py-2.5 px-2 gap-2 hover:bg-darkGrey cursor-pointer rounded-md w-1/2 ">
+          <div className="flex items-center py-2.5 px-2 gap-2 hover:bg-darkGrey cursor-pointer rounded-md w-2/3 ">
             <Image
               src={picture}
               width={35}

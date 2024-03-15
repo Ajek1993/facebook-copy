@@ -42,6 +42,7 @@ export default function Home() {
           name: doc.data().name,
           lastname: doc.data().lastname,
           userID: doc.data().userID,
+          picture: doc.data().picture,
         });
       });
     };

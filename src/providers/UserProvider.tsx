@@ -12,6 +12,7 @@ export default function UserProvider({ children }: any) {
     name: "",
     lastname: "",
     userID: "",
+    picture: "",
   });
 
   const auth = getAuth(app);
