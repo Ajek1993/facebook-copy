@@ -22,6 +22,7 @@ import {
 import CircularButton from "../common/buttons/CircularButton";
 import NavigationButton from "../common/buttons/NavigationButton";
 import { useUser } from "@/providers/UserProvider";
+import { useChatSetting } from "@/providers/ChatProvider";
 
 const NAV_BUTTONS: NavButton[] = [
   { path: "/home", font: faHouse },
@@ -42,6 +43,7 @@ export default function Navbar() {
   const pathname = usePathname();
   const { handleLogout } = useUser();
   const [listOpen, setListOpen] = useState(false);
+  const { setMessengerOpen } = useChatSetting();
 
   return (
     <>
@@ -105,6 +107,7 @@ export default function Navbar() {
                 font={button.font}
                 path={button.path}
                 setListOpen={setListOpen}
+                setMessengerOpen={setMessengerOpen}
               />
             ))}
             {listOpen && (

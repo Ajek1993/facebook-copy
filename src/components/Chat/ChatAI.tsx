@@ -17,8 +17,8 @@ import ChatButton from "./ChatButton";
 import { useChatSetting } from "@/providers/ChatProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Chat({}) {
-  const { chatMinimize } = useChatSetting();
+export default function ChatAI({}) {
+  const { chatAIMinimize } = useChatSetting();
 
   const ref = useRef<HTMLDivElement>(null);
   const { messages, input, handleInputChange, handleSubmit, isLoading, error } =
@@ -40,7 +40,7 @@ export default function Chat({}) {
   return (
     <div
       className={`mx-auto max-w-3xl ${
-        chatMinimize ? "w-[200px]" : "w-[320px]"
+        chatAIMinimize ? "w-[200px]" : "w-[320px]"
       }`}
     >
       <div className="mt-3 w-full max-w-lg rounded-xl bg-secondary_darkGrey">
@@ -51,31 +51,33 @@ export default function Chat({}) {
               width={35}
               height={35}
               alt="userPhoto"
-              className="rounded-full"
+              className="rounded-full w-[35px] h-[35px]"
             />
-            {!chatMinimize && <p>John Smith</p>}
+            {!chatAIMinimize && <p>John Smith</p>}
           </div>
           <div className="flex items-center px-2">
             <ChatButton icon={faPhone} />
             <ChatButton icon={faVideo} />
-            {!chatMinimize && (
+            {!chatAIMinimize && (
               <ChatButton
                 icon={faWindowMinimize}
                 name="windowMinimize/Maximize"
+                role="ai"
               />
             )}
-            {chatMinimize && (
+            {chatAIMinimize && (
               <ChatButton
                 icon={faWindowMaximize}
                 name="windowMinimize/Maximize"
+                role="ai"
               />
             )}
-            <ChatButton icon={faXmark} name="windowClose" />
+            <ChatButton icon={faXmark} name="windowClose" role="ai" />
           </div>
         </div>
 
-        {!chatMinimize && <GreySeparator />}
-        {!chatMinimize && (
+        {!chatAIMinimize && <GreySeparator />}
+        {!chatAIMinimize && (
           <ScrollArea
             className="live_chat h-[330px] w-full p-4 overflow-y-auto text-sm"
             ref={ref}
@@ -112,7 +114,7 @@ export default function Chat({}) {
           </ScrollArea>
         )}
 
-        {!chatMinimize && (
+        {!chatAIMinimize && (
           <form onSubmit={handleSubmit} className="flex justify-center">
             <input
               value={input}

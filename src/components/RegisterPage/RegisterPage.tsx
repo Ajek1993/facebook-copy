@@ -6,13 +6,17 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { app } from "../../../firebase.ts";
 import { useUser } from "@/providers/UserProvider.tsx";
 
+function randomInteger(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 export default function RegisterPage() {
   const router = useRouter();
   const { setNewUser } = useUser();
 
   const [values, setValues] = useState({
     name: "",
-    surname: "",
+    lastname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -20,7 +24,7 @@ export default function RegisterPage() {
 
   const [errors, setErrors] = useState({
     name: "",
-    surname: "",
+    lastname: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -39,7 +43,7 @@ export default function RegisterPage() {
     e.preventDefault();
     setErrors({
       name: "",
-      surname: "",
+      lastname: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -57,15 +61,15 @@ export default function RegisterPage() {
         name: "",
       }));
     }
-    if (!values.surname || values.surname.length < 2) {
+    if (!values.lastname || values.lastname.length < 2) {
       setErrors((prev) => ({
         ...prev,
-        surname: "Surname should have at least 3 characters",
+        lastname: "Lastname should have at least 3 characters",
       }));
     } else {
       setErrors((prev) => ({
         ...prev,
-        surname: "",
+        lastname: "",
       }));
     }
 
@@ -110,11 +114,16 @@ export default function RegisterPage() {
 
     const auth = getAuth(app);
 
-    const { name, surname, email, password } = values;
+    const { name, lastname, email, password } = values;
+
+    const picture = `https://picsum.photos/${randomInteger(
+      50,
+      70
+    )}/${randomInteger(50, 70)}`;
 
     createUserWithEmailAndPassword(auth, email, password)
       .then(() => {
-        setNewUser({ name, surname });
+        setNewUser({ name, lastname, picture });
         router.push("/home");
       })
       .catch((error) => {});
@@ -143,21 +152,21 @@ export default function RegisterPage() {
             )}
           </div>
           <div className="flex flex-col mt-6">
-            <label className=" mb-2 py-1" htmlFor="surname">
-              Surname
+            <label className=" mb-2 py-1" htmlFor="lastname">
+              Lastname
             </label>
             <input
               className={`bg-transparent outline-none py-1 border-b ${
-                errors.surname ? "border-red" : "border-white"
+                errors.lastname ? "border-red" : "border-white"
               } border-solid`}
               type="text"
-              id="surname"
-              name="surname"
-              value={values.surname}
+              id="lastname"
+              name="lastname"
+              value={values.lastname}
               onChange={handleChange}
             />
-            {errors.surname && (
-              <p className="text-red text-xs mt-1">{errors.surname}</p>
+            {errors.lastname && (
+              <p className="text-red text-xs mt-1">{errors.lastname}</p>
             )}
           </div>
           <div className="flex flex-col mt-6">

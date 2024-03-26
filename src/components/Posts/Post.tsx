@@ -56,7 +56,7 @@ export default function Post({ post }: { post: Post }) {
                   width={40}
                   height={40}
                   alt="userPhoto"
-                  className="rounded-full"
+                  className="rounded-full w-[40px] h-[40px]"
                 />
               </div>
               <div className="leading-7">

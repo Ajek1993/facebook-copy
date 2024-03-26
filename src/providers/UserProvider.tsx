@@ -10,8 +10,9 @@ export default function UserProvider({ children }: any) {
   const [newUser, setNewUser] = useState(null);
   const [actualUser, setActualUser] = useState({
     name: "",
-    surname: "",
+    lastname: "",
     userID: "",
+    picture: "",
   });
 
   const auth = getAuth(app);

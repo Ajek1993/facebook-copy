@@ -6,16 +6,26 @@ type AppProps = {
   path: string;
   font: regular.IconDefinition;
   setListOpen?: Function;
+  setMessengerOpen?: Function;
 };
 
-export default function CircularButton({ path, font, setListOpen }: AppProps) {
+export default function CircularButton({
+  path,
+  font,
+  setListOpen,
+  setMessengerOpen,
+}: AppProps) {
   return (
     <li
-      onClick={() =>
+      onClick={() => {
         setListOpen &&
-        path === "Account" &&
-        setListOpen((prev: boolean) => !prev)
-      }
+          path === "Account" &&
+          setListOpen((prev: boolean) => !prev);
+
+        setMessengerOpen &&
+          path === "Messenger" &&
+          setMessengerOpen((prev: boolean) => !prev);
+      }}
       className="z-10"
     >
       <div className="sideBtn h-[45px] w-[45px] flex items-center justify-center p-2 bg-darkGrey hover:opacity-75 rounded-full cursor-pointer after:absolute after:-bottom-10 after:bg-white after:px-2 after:py-1 after:rounded-xl after:hidden after:justify-center after:items-center after:text-black hover:after:flex">

@@ -2,24 +2,16 @@
 
 import React from "react";
 import Heading from "../Heading";
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
   faGift,
   faMagnifyingGlass,
 } from "@fortawesome/free-solid-svg-icons";
-import { persons } from "@/data/persons.ts";
 import GreySeparator from "../common/GreySeparator";
-import { useChatSetting } from "@/providers/ChatProvider";
+import Messenger from "../Messenger/Messenger";
 
 export default function RightSideBar() {
-  const { setChatOpen } = useChatSetting();
-
-  const handleClick = (id: number): void => {
-    id === 0 && setChatOpen((prev: boolean) => !prev);
-  };
-
   return (
     <aside className="w-[350px] min-w-[250px] hidden lg:block overflow-y-scroll fixed right-0">
       <div className="mt-4 flex justify-between items-center">
@@ -56,26 +48,7 @@ export default function RightSideBar() {
           />
         </div>
       </div>
-      <ul>
-        {persons.map((person, id) => (
-          <li
-            key={id}
-            className="flex items-center py-2 px-2 gap-3 hover:bg-darkGrey cursor-pointer rounded-md"
-            onClick={() => handleClick(id)}
-          >
-            <Image
-              src={person.picture}
-              width={35}
-              height={35}
-              alt="userPhoto"
-              className="rounded-full"
-            />
-            <p>
-              {person.name} {person.lastname}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <Messenger />
       <GreySeparator />
       <div className="mt-4 flex justify-between items-center">
         <Heading title={"Group coversations"} />
