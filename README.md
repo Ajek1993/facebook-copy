@@ -1,26 +1,44 @@
-# Facebook-copy with AI chat
+#  Facebook-copy with AI chat
 
-## Technologies:
+## Project Overview
+
+The application is similar to well-known social network. When you first enter the page, you going to see sing in / sign up form.
+I used <a href="https://firebase.google.com/">Firebase OAuth</a> for authentication. This app makes it possible:
+
+- add/delete post,
+- like/unlike posts,
+- chat with AI assistant named John Smith,
+
+## Tech/framework used 🔧
 
 - Typescript,
 - Next.js,
 - Tailwind CSS,
 - CSS,
 - Next UI,
-- ChatGPT 3.5,
+- Open AI,
 - ESLint,
 - Firebase,
 - Firestore
 
-## Features
+## Code Example/Issues 🔍
 
-The application is similar to well-known social network. This app makes it possible:
+If you have any issues, please let me know in the issues section or directly to arkadiusz.sarach@gmail.com
 
-- add/delete post,
-- like/unlike posts,
-- chat with AI assistant named John Smith,
+## Installation 💾
+```
+git clone https://github.com/Ajek1993/facebook-copy.git
+npm install
+npm run dev
+```
 
-## Images
+## Sign in ❗️
+
+- Email: janek@test.pl
+- Password: 123456
+
+## Live 📍
+<a>https://facebook-copy-bice.vercel.app/</a>
 
 ## To do
 
@@ -30,6 +48,4 @@ The application is similar to well-known social network. This app makes it possi
 - [] user page,
 - [] search for friends,
 
-# Deployed to https://facebook-copy-bice.vercel.app/
 
-You may sign on or use login: janek@test.pl password: 123456
